@@ -1,4 +1,3 @@
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -39,6 +38,7 @@ namespace Puzzles
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            _puzzlesBar.CloseOrOpen(true);
             SetRayTarget(false);
             _parent.ChangeRayTarget(true);
             _parent.transform.SetAsLastSibling();
@@ -47,12 +47,13 @@ namespace Puzzles
         
         public void OnEndDrag(PointerEventData eventData)
         {
+            _puzzlesBar.CloseOrOpen(false);
             _parent.ChangeRayTarget(false);
-            _vfx.Deselect();
-            
+
             if (_transform.localPosition == Vector3.zero) _puzzlesBar.ReplenishPuzzle(_startPosition);
             else
             {
+                _vfx.Deselect();
                 MoveToStart();
                 SetRayTarget(true);
             }

@@ -1,0 +1,1 @@
+namespace Ui { public class ToMenuButton : UnityEngine.MonoBehaviour { public void ToMenu() => UnityEngine.SceneManagement.SceneManager.LoadScene(0); } }
