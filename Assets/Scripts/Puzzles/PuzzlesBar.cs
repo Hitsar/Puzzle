@@ -16,7 +16,7 @@ namespace Puzzles
             _puzzle++;
             if (_puzzlesInPlaceCount == _puzzles.Length)
             {
-                FindAnyObjectByType<WinMenu>().gameObject.SetActive(true);
+                FindAnyObjectByType<WinMenu>(FindObjectsInactive.Include).gameObject.SetActive(true);
                 FindAnyObjectByType<Wallet>().AddMoneyForWin();
                 return;
             }

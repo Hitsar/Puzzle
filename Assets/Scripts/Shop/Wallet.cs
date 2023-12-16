@@ -19,7 +19,7 @@ namespace Shop
 
         public bool RemoveMoney(int money)
         {
-            if (money <= 0) return false;
+            if (_money - money <= 0 || money <= 0) return false;
             
             _money -= money;
             return true;

@@ -8,7 +8,7 @@ namespace Ui
     {
         private Vector2 _startPosition;
 
-        private void OnEnable() => transform.DOMoveY(0, 0.8f).SetEase(Ease.OutCubic);
+        private void OnEnable() => transform.DOLocalMoveY(0, 0.8f).SetEase(Ease.OutCubic);
 
         public void ToMenu()
         {

@@ -48,14 +48,14 @@ namespace Puzzles
         public void OnEndDrag(PointerEventData eventData)
         {
             _parent.ChangeRayTarget(false);
-
+            _vfx.Deselect();
+            
             if (_transform.localPosition == Vector3.zero) _puzzlesBar.ReplenishPuzzle(_startPosition);
             else
             {
                 MoveToStart();
                 SetRayTarget(true);
             }
-            _vfx.Deselect();
         }
     }
 }

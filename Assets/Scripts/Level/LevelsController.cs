@@ -27,6 +27,7 @@ namespace Level
 
     public enum PuzzleFormat
     {
-        X4Y3
+        X3Y4,
+        Test
     }
 }
