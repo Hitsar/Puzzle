@@ -9,6 +9,19 @@ namespace Shop
         private int _money;
         private int _moneyForWin;
 
+        private static Wallet _instance;
+
+        private void Awake()
+        {
+            if (_instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            DontDestroyOnLoad(gameObject);
+            _instance = this;
+        }
+
         public void AddMoneyForWin()
         {
             _money += _moneyForWin;
