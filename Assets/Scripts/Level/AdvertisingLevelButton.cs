@@ -7,7 +7,7 @@ namespace Level
         protected override void Buy()
         {
             //TODO: показ рекламы, а пока будет так.
-            Debug.LogAssertion("========Реклама========");
+            Debug.Log("========Реклама========");
             EndBuy();
         }
     }

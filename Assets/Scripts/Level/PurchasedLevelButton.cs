@@ -1,5 +1,6 @@
 using Shop;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Level
 {
@@ -17,6 +18,7 @@ namespace Level
 
         protected void EndBuy()
         {
+            GetComponent<Image>().color = Color.white;
             _isPurchased = true;
             _buyButton.SetActive(false);
         }

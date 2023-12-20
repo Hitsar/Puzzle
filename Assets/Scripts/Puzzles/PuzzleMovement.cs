@@ -53,7 +53,6 @@ namespace Puzzles
             if (_transform.localPosition == Vector3.zero) _puzzlesBar.ReplenishPuzzle(_startPosition);
             else
             {
-                _vfx.Deselect();
                 MoveToStart();
                 SetRayTarget(true);
             }
