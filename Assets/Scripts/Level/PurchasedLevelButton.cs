@@ -9,10 +9,14 @@ namespace Level
         [SerializeField] private GameObject _buyButton;
         private bool _isPurchased;
         
-        private void Buy()
+        protected virtual void Buy()
         {
             if (!FindAnyObjectByType<Wallet>().RemoveMoney(_price)) return;
-            
+            EndBuy();
+        }
+
+        protected void EndBuy()
+        {
             _isPurchased = true;
             _buyButton.SetActive(false);
         }
