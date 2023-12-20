@@ -30,7 +30,7 @@ namespace Shop
 
         public bool RemoveMoney(int money)
         {
-            if (_money - money <= 0 || money <= 0) return false;
+            if (_money - money < 0 || money < 0) return false;
             
             _money -= money;
             _text.text = _money.ToString();
@@ -39,10 +39,9 @@ namespace Shop
 
         public void SetMoneyForWin(int money)
         {
-            if (money <= 0) return;
+            if (money < 0) return;
             
             _moneyForWin = money;
-            _text.text = _money.ToString();
         }
     }
 }
