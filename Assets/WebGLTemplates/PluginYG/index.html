@@ -89,16 +89,16 @@
     #endif
 
     <style>
-        /* РЈР±РёСЂР°РµРј РІС‹РґРµР»РµРЅРёРµ РїРѕ РЅР°Р¶Р°С‚РёСЋ РєР»Р°РІРёС€ */
+        /* Убираем выделение по нажатию клавиш */
         canvas:focus {
             outline: none;
         }
 
         html, body {
-            /* РЈР±РёСЂР°РµРј РѕС‚СЃС‚СѓРїС‹ */
+            /* Убираем отступы */
             padding: 0;
             margin: 0;
-            /* РћС‚РєР»СЋС‡Р°РµРј СЃРєСЂРѕР»Р» Рё Р»РѕРЅРіС‚Р°Рї РЅР° IOS */
+            /* Отключаем скролл и лонгтап на IOS */
             overflow: hidden;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -107,7 +107,7 @@
             -ms-user-select: none;
             user-select: none;
             -webkit-tap-highlight-color: rgba(0,0,0,0);
-            /* РЎС‚Р°РІРёРј РІС‹СЃРѕС‚Сѓ РЅР° 100% */
+            /* Ставим высоту на 100% */
             height: 100%;
         }
     </style>
@@ -295,16 +295,16 @@
             config.devicePixelRatio = 1;
         }
 
-        // Р¤РѕРЅРѕРІРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РїСЂРё Р·Р°РіСЂСѓР·РєРµ РёРіСЂС‹. РџСЂРё СЃР±РѕСЂРєРµ Р±РёР»РґР° РєРѕРґ РјРµРЅСЏРµС‚СЃСЏ РІР·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РЅР°СЃС‚СЂРѕРµРє РїСЂРѕРµРєС‚Р°.
+        // Фоновое изображение при загрузке игры. При сборке билда код меняется взависимости от настроек проекта.
         var backgroundUnity = "url('" + buildUrl + "/{{{ BACKGROUND_FILENAME.replace(/'/g, '%27') }}}') center / cover";
         canvas.style.background = "url('background.png') center / cover";
 
         loadingCover.style.display = "";
 
-        // Р’С‹РєР»СЋС‡Р°РµРј РїРѕСЏРІР»РµРЅРёРµ РјРµРЅСЋ РїСЂРё РїСЂР°РІРѕРј РєР»РёРєРµ РјС‹С€Рё
+        // Выключаем появление меню при правом клике мыши
         document.addEventListener('contextmenu', event => event.preventDefault());
 
-        // Р’РѕР·РІСЂР°С‰Р°РµРј С„РѕРєСѓСЃ, РµСЃР»Рё РєР»РёРєРЅСѓР»Рё РїРѕ СЌРєСЂР°РЅСѓ
+        // Возвращаем фокус, если кликнули по экрану
         function FocusGame() {
             window.focus();
             canvas.focus();
@@ -641,8 +641,8 @@
                         jsonEntries.isDefault = res.default;
                         jsonEntries.isInvertSortOrder = res.description.invert_sort_order;
                         jsonEntries.decimalOffset = res.description.score_format.options.decimal_offset;
-                        jsonEntries.type = res.description.type; // РќРµ РѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РЅР° РјРѕРјРµРЅС‚ 18.07.23
-                        //jsonEntries.title = res.title; // Р РµР°Р»РёР·СѓР№С‚Рµ РїРѕ РїСЂРµРґРїРѕС‡С‚РµРЅРёСЏРј
+                        jsonEntries.type = res.description.type; // Не определяется на момент 18.07.23
+                        //jsonEntries.title = res.title; // Реализуйте по предпочтениям
 
                         return leaderboard.getLeaderboardEntries(nameLB, {
                             quantityTop: quantityTop,

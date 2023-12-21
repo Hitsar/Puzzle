@@ -18,7 +18,7 @@ namespace Shop
         public bool RemoveMoney(int money)
         {
             if (_money - money <= 0 || money <= 0) return false;
-            
+
             _money -= money;
             _text.text = _money.ToString();
             return true;
@@ -27,9 +27,16 @@ namespace Shop
         public void SetMoneyForWin(int money)
         {
             if (money <= 0) return;
-            
+
             _moneyForWin = money;
             _text.text = _money.ToString();
         }
+
+        public void AddMoney(int amount)
+        {
+            _money += amount;
+            _text.text = _money.ToString();
+        }
+
     }
 }

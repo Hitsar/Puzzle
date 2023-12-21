@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using YG;
 
 namespace YG.Example
 {
     public class RewardedAd : MonoBehaviour
     {
         [SerializeField] int AdID;
-        [SerializeField] Text textMoney;
+        [SerializeField] TMP_Text textMoney;
 
-        int moneyCount = 0;
+        int moneyCount = 100;
 
         void Awake()
         {
             AdMoney(0);
         }
 
-        private void OnEnable() => YandexGame.RewardVideoEvent += Rewarded;
-        private void OnDisable() => YandexGame.RewardVideoEvent -= Rewarded;
+        public void OnEnable() => YandexGame.RewardVideoEvent += Rewarded;
+        public void OnDisable() => YandexGame.RewardVideoEvent -= Rewarded;
 
         void Rewarded(int id)
         {
@@ -29,5 +31,13 @@ namespace YG.Example
             moneyCount += count;
             textMoney.text = "" + moneyCount;
         }
+
+        // Метод для вызова видео рекламы
+        void ExampleOpenRewardAd(int id)
+        {
+            // Вызываем метод открытия видео рекламы
+            YandexGame.RewVideoShow(id);
+        }
     }
 }
+
