@@ -1302,6 +1302,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 16AdvertisingLevelButton.7
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 16
@@ -1488,6 +1496,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 12AdvertisingLevelButton.6
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 12
@@ -2044,6 +2060,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 18AdvertisingLevelButton.9
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 18
@@ -2804,6 +2828,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 24AdvertisingLevelButton.3
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 24
@@ -3182,6 +3214,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 23AdvertisingLevelButton.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 23
@@ -4141,6 +4181,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 11AdvertisingLevelButton.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 11
@@ -4620,6 +4668,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 10AdvertisingLevelButton.4
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 10
@@ -5129,6 +5185,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4AdvertisingLevelButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 4
@@ -5243,6 +5307,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 22AdvertisingLevelButton.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 22
@@ -5484,6 +5556,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 5AdvertisingLevelButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 5
@@ -5956,6 +6036,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 6AdvertisingLevelButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 6
@@ -6066,6 +6154,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 17AdvertisingLevelButton.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977773043997982798, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -619570535, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
     - target: {fileID: 8205325337658968981, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: _level
       value: 17
