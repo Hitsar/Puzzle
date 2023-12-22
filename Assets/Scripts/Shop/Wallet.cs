@@ -5,12 +5,14 @@ namespace Shop
 {
     public class Wallet : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _text;
+        [SerializeField] private TMP_Text _textMoney;
+        [SerializeField] private TMP_Text _textMoneyForWin;
+        
         private int _money;
         private int _moneyForWin;
 
         private static Wallet _instance;
-
+        
         private void Awake()
         {
             if (_instance != null)
@@ -25,7 +27,7 @@ namespace Shop
         public void AddMoneyForWin()
         {
             _money += _moneyForWin;
-            _text.text = _money.ToString();
+            _textMoney.text = _money.ToString();
         }
 
         public bool RemoveMoney(int money)
@@ -33,7 +35,7 @@ namespace Shop
             if (_money - money < 0 || money < 0) return false;
             
             _money -= money;
-            _text.text = _money.ToString();
+            _textMoney.text = _money.ToString();
             return true;
         }
 
@@ -42,6 +44,7 @@ namespace Shop
             if (money < 0) return;
             
             _moneyForWin = money;
+            _textMoneyForWin.text = _moneyForWin.ToString();
         }
     }
 }
