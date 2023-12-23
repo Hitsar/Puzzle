@@ -1,4 +1,5 @@
 using Shop;
+using TMPro;
 using Ui;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,8 +25,9 @@ namespace Puzzles
             
             if (_puzzlesInPlaceCount == _puzzles.Length)
             {
-                FindAnyObjectByType<WinMenu>(FindObjectsInactive.Include).gameObject.SetActive(true);
+                FindAnyObjectByType<WinPanelAnimator>(FindObjectsInactive.Include).gameObject.SetActive(true);
                 FindAnyObjectByType<Wallet>().AddMoneyForWin();
+                
                 _audioWin.Play();
                 return;
             }

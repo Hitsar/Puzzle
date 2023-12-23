@@ -338,7 +338,7 @@ MonoBehaviour:
   m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
+  m_CameraType: 1
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -1005,7 +1005,7 @@ Canvas:
   m_GameObject: {fileID: 944591051}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 254004741}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1665,6 +1665,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _upperBar: {fileID: 2099397017}
+  _text: {fileID: 0}
+  _audioInPlace: {fileID: 0}
+  _audioWin: {fileID: 0}
 --- !u!114 &1579519330
 MonoBehaviour:
   m_ObjectHideFlags: 0
