@@ -46,5 +46,12 @@ namespace Shop
             _moneyForWin = money;
             _textMoneyForWin.text = _moneyForWin.ToString();
         }
+
+        public void AddMoney(int amount)
+        {
+            _money += amount;
+            _textMoney.text = _money.ToString();
+        }
+
     }
 }
