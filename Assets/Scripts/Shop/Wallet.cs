@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using YG;
 
 namespace Shop
 {
@@ -15,6 +16,7 @@ namespace Shop
         
         private void Awake()
         {
+            YandexGame.LoadCloud();
             if (_instance != null)
             {
                 Destroy(gameObject);
@@ -22,12 +24,16 @@ namespace Shop
             }
             DontDestroyOnLoad(gameObject);
             _instance = this;
+            _money = YandexGame.savesData.money;
         }
 
         public void AddMoneyForWin()
         {
             _money += _moneyForWin;
             _textMoney.text = _money.ToString();
+            
+            YandexGame.savesData.money = _money;
+            YandexGame.SaveCloud();
         }
 
         public bool RemoveMoney(int money)
@@ -36,6 +42,9 @@ namespace Shop
             
             _money -= money;
             _textMoney.text = _money.ToString();
+            
+            YandexGame.savesData.money = _money;
+            YandexGame.SaveCloud();
             return true;
         }
 
@@ -46,12 +55,5 @@ namespace Shop
             _moneyForWin = money;
             _textMoneyForWin.text = _moneyForWin.ToString();
         }
-
-        public void AddMoney(int amount)
-        {
-            _money += amount;
-            _textMoney.text = _money.ToString();
-        }
-
     }
 }

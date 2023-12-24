@@ -8,9 +8,9 @@ namespace YG
         [SerializeField] private Sprite[] languageSprites;
         [SerializeField] private Image imageComponent;
 
-        private void OnEnable() => LanguageManager.OnLanguageChanged += UpdateLanguageSprite;
+        private void OnEnable() => YandexGame.SwitchLangEvent += UpdateLanguageSprite;
 
-        private void OnDisable() => LanguageManager.OnLanguageChanged -= UpdateLanguageSprite;
+        private void OnDisable() => YandexGame.SwitchLangEvent -= UpdateLanguageSprite;
 
         private void UpdateLanguageSprite(string newLanguage)
         {
