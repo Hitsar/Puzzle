@@ -8,33 +8,11 @@ namespace AdsManagement
 {
     public class RewardedAdsManager : MonoBehaviour
     {
-        public static RewardedAdsManager Instance { get; private set; }
-
-        [SerializeField] private int rewardAmount = 100; // Количество монет для вознаграждения
         [SerializeField] private Wallet wallet;
 
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
+        private void OnEnable() => YandexGame.RewardVideoEvent += OnRewardedVideo;
 
-        private void OnEnable()
-        {
-            YandexGame.RewardVideoEvent += OnRewardedVideo;
-        }
-
-        private void OnDisable()
-        {
-            YandexGame.RewardVideoEvent -= OnRewardedVideo;
-        }
+        private void OnDisable() => YandexGame.RewardVideoEvent -= OnRewardedVideo;
 
         public void ShowRewardedAd(int adId)
         {
@@ -42,21 +20,12 @@ namespace AdsManagement
             YandexGame.RewVideoShow(adId);
         }
 
-        private void OnRewardedVideo(int adId)
-        {
-            if (adId == 0)
-            {
-                AddCoins(rewardAmount); // Добавляем заданное количество монет
-            }
-        }
+        private void OnRewardedVideo(int adId) { if (adId == 0) AddCoins(); }
 
-        private void AddCoins(int amount)
+        private void AddCoins()
         {
-            Debug.Log("Добавляем монеты: " + amount);
-            if (wallet != null)
-            {
-                wallet.AddMoney(amount);
-            }
+            Debug.Log("Добавляем монеты");
+            if (wallet != null) wallet.AddMoneyForWin();
         }
     }
 }

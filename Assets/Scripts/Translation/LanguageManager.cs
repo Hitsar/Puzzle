@@ -1,14 +1,10 @@
 namespace YG
 {
-    // —татический класс дл€ управлени€ сменой €зыка
     public static class LanguageManager
     {
         public delegate void LanguageChangeHandler(string newLanguage);
         public static event LanguageChangeHandler OnLanguageChanged;
 
-        public static void ChangeLanguage(string language)
-        {
-            OnLanguageChanged?.Invoke(language);
-        }
+        public static void ChangeLanguage(string language) => OnLanguageChanged?.Invoke(language);
     }
 }

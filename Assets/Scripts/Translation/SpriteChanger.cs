@@ -1,23 +1,16 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // Добавляем пространство имен для работы с UI
+using UnityEngine.UI; 
 
 namespace YG
 {
     public class SpriteChanger : MonoBehaviour
     {
-        [SerializeField] private List<Sprite> languageSprites; // Спрайты для разных языков
-        [SerializeField] private Image imageComponent; // Используем компонент Image для отображения спрайта
+        [SerializeField] private Sprite[] languageSprites;
+        [SerializeField] private Image imageComponent;
 
-        private void OnEnable()
-        {
-            LanguageManager.OnLanguageChanged += UpdateLanguageSprite;
-        }
+        private void OnEnable() => LanguageManager.OnLanguageChanged += UpdateLanguageSprite;
 
-        private void OnDisable()
-        {
-            LanguageManager.OnLanguageChanged -= UpdateLanguageSprite;
-        }
+        private void OnDisable() => LanguageManager.OnLanguageChanged -= UpdateLanguageSprite;
 
         private void UpdateLanguageSprite(string newLanguage)
         {
@@ -41,17 +34,17 @@ namespace YG
                     languageIndex = 4;
                     break;
                 default:
-                    Debug.LogError("Неизвестный язык: " + newLanguage);
+                    Debug.LogError("РќРµРёР·РІРµСЃС‚РЅС‹Р№ СЏР·С‹Рє: " + newLanguage);
                     break;
             }
 
-            if (languageIndex >= 0 && languageIndex < languageSprites.Count)
+            if (languageIndex >= 0 && languageIndex < languageSprites.Length)
             {
                 imageComponent.sprite = languageSprites[languageIndex];
             }
             else
             {
-                Debug.LogError("Спрайт для языка " + newLanguage + " не найден");
+                Debug.LogError("РЎРїСЂР°Р№С‚ РґР»СЏ СЏР·С‹РєР° " + newLanguage + " РЅРµ РЅР°Р№РґРµРЅ");
             }
         }
     }
