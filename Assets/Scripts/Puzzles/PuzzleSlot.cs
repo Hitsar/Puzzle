@@ -8,8 +8,8 @@ namespace Puzzles
     {
         private Image _image;
 
-        private void OnValidate() { if (_image == null) _image = GetComponent<Image>(); }
-        
+        private void Start() => _image = GetComponent<Image>();
+
         public void OnDrop(PointerEventData eventData)
         {
             ChangeRayTarget(false);

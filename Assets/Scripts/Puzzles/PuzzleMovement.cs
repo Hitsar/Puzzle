@@ -16,19 +16,19 @@ namespace Puzzles
         private PuzzlesBar _puzzlesBar;
         private Vector2 _startPosition;
 
-        private void OnValidate()
+        private void Start()
         {
-            if (_transform == null) _transform = GetComponent<RectTransform>();
-            if (_image == null) _image = GetComponent<Image>();
-            _vfx ??= new PuzzleVfx(transform, GetComponent<AudioSource>());
+            _transform = GetComponent<RectTransform>();
+            _image = GetComponent<Image>();
+            _vfx = new PuzzleVfx(transform, GetComponent<AudioSource>());
             
-            if (_canvas == null) _canvas = GetComponentInParent<Canvas>();
-            if (_parent == null) _parent = GetComponentInParent<PuzzleSlot>();
-            if (_puzzlesBar == null) _puzzlesBar = FindAnyObjectByType<PuzzlesBar>();
+            _canvas = GetComponentInParent<Canvas>();
+            _parent = GetComponentInParent<PuzzleSlot>();
+            _puzzlesBar = FindAnyObjectByType<PuzzlesBar>();
+            
+            SetStartPosition(_transform.position);
         }
-
-        private void Start() => SetStartPosition(_transform.position);
-
+        
         public void SetStartPosition(Vector2 position) => _startPosition = position;
         public void SetRayTarget(bool isActive) => _image.raycastTarget = isActive;
         
