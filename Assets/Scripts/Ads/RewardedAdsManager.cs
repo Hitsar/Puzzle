@@ -25,7 +25,7 @@ namespace AdsManagement
         private void AddCoins()
         {
             Debug.Log("Добавляем монеты");
-            if (wallet != null) wallet.AddMoneyForWin();
+            wallet.AddMoneyForWin();
         }
     }
 }

@@ -16,7 +16,6 @@ namespace Shop
         
         private void Awake()
         {
-            YandexGame.LoadCloud();
             if (_instance != null)
             {
                 Destroy(gameObject);
@@ -24,6 +23,8 @@ namespace Shop
             }
             DontDestroyOnLoad(gameObject);
             _instance = this;
+            
+            YandexGame.LoadCloud();
             _money = YandexGame.savesData.money;
         }
 

@@ -7,6 +7,6 @@ namespace Ui
     {
         private void OnEnable() => transform.DOLocalMoveY(0, 0.8f).SetEase(Ease.OutCubic);
 
-        private void OnDisable() => transform.localPosition = Vector2.up * -1650;
+        private void OnDisable() => transform.localPosition = Vector2.up * -1150;
     }
 }
