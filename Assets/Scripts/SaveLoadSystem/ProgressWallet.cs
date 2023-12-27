@@ -2,6 +2,6 @@ namespace Saves
 {
     public class ProgressWallet
     {
-        public byte MoneyCount;
+        public int MoneyCount;
     }
 }

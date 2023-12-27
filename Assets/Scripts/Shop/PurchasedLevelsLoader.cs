@@ -1,25 +1,25 @@
 using System.Linq;
 using Level;
+using Saves;
 using UnityEngine;
-using YG;
 
 namespace Shop
 {
-    public class PurchasedLevelsLoader : MonoBehaviour
+    public class PurchasedLevelsLoader : MonoBehaviour, ISaveableLevels
     {
         [SerializeField] private PurchasedLevelButton[] _levels;
 
-        /*private void Start()
+        public void Import(ProgressLevels progressWallet)
         {
-            bool[] openedLevels = YandexGame.savesData.openLevels;
-            
-            for (int i = 0; i < _levels.Length - 1; i++) { if (openedLevels[i]) _levels[i].EndBuy(); }
+            _levels = progressWallet.Levels.ToArray();
         }
 
-        public void UpdateOpenLevels()
+        public ProgressLevels Export()
         {
-             YandexGame.savesData.openLevels = _levels.Select(x => x.IsPurchased).ToArray();
-             YandexGame.SaveCloud();
-        }*/
+            return new ProgressLevels
+            {
+                Levels = _levels.ToList()
+            };
+        }
     }
 }

@@ -1,10 +1,10 @@
+using Saves;
 using TMPro;
 using UnityEngine;
-using YG;
 
 namespace Shop
 {
-    public class Wallet : MonoBehaviour
+    public class Wallet : MonoBehaviour, ISaveableMoney
     {
         [SerializeField] private TMP_Text _textMoney;
         [SerializeField] private TMP_Text _textMoneyForWin;
@@ -41,12 +41,27 @@ namespace Shop
             return true;
         }
 
+        public void UpdateMoney() => _textMoney.text = _money.ToString();
+            
         public void SetMoneyForWin(int money)
         {
             if (money < 0) return;
             
             _moneyForWin = money;
             _textMoneyForWin.text = _moneyForWin.ToString();
+        }
+
+        public void Import(ProgressWallet progressWallet)
+        {
+            _money = progressWallet.MoneyCount;
+        }
+
+        public ProgressWallet Export()
+        {
+            return new ProgressWallet
+            {
+                MoneyCount = _money
+            };
         }
     }
 }
