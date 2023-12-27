@@ -20,7 +20,7 @@ namespace Puzzles
         {
             _transform = GetComponent<RectTransform>();
             _image = GetComponent<Image>();
-            _vfx = new PuzzleVfx(transform, GetComponent<AudioSource>());
+            _vfx = new PuzzleVfx(transform);
             
             _canvas = GetComponentInParent<Canvas>();
             _parent = GetComponentInParent<PuzzleSlot>();
