@@ -23,18 +23,12 @@ namespace Shop
             }
             DontDestroyOnLoad(gameObject);
             _instance = this;
-            
-            YandexGame.LoadCloud();
-            _money = YandexGame.savesData.money;
         }
 
         public void AddMoneyForWin()
         {
             _money += _moneyForWin;
-            _textMoney.text = _money.ToString();
-            
-            YandexGame.savesData.money = _money;
-            YandexGame.SaveCloud();
+            _textMoney.text = _money.ToString();          
         }
 
         public bool RemoveMoney(int money)
@@ -44,8 +38,6 @@ namespace Shop
             _money -= money;
             _textMoney.text = _money.ToString();
             
-            YandexGame.savesData.money = _money;
-            YandexGame.SaveCloud();
             return true;
         }
 

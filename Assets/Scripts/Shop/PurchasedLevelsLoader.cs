@@ -9,7 +9,7 @@ namespace Shop
     {
         [SerializeField] private PurchasedLevelButton[] _levels;
 
-        private void Start()
+        /*private void Start()
         {
             bool[] openedLevels = YandexGame.savesData.openLevels;
             
@@ -18,8 +18,8 @@ namespace Shop
 
         public void UpdateOpenLevels()
         {
-            YandexGame.savesData.openLevels = _levels.Select(x => x.IsPurchased).ToArray();
-            YandexGame.SaveCloud();
-        }
+             YandexGame.savesData.openLevels = _levels.Select(x => x.IsPurchased).ToArray();
+             YandexGame.SaveCloud();
+        }*/
     }
 }

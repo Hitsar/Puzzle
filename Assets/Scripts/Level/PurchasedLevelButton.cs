@@ -22,7 +22,6 @@ namespace Level
             GetComponent<Image>().color = Color.white;
             IsPurchased = true;
             _buyButton.SetActive(false);
-            FindAnyObjectByType<PurchasedLevelsLoader>().UpdateOpenLevels();
         }
 
         public override void LoadLevel()
