@@ -10,14 +10,9 @@ namespace AdsManagement
     {
         [SerializeField] private Wallet wallet;
 
-        private void OnEnable() => YandexGame.RewardVideoEvent += OnRewardedVideo;
-
-        private void OnDisable() => YandexGame.RewardVideoEvent -= OnRewardedVideo;
-
         public void ShowRewardedAd(int adId)
         {
             Debug.Log("Показ рекламы с ID: " + adId);
-            YandexGame.RewVideoShow(adId);
         }
 
         private void OnRewardedVideo(int adId) { if (adId == 0) AddCoins(); }

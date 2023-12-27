@@ -8,10 +8,6 @@ namespace YG
         [SerializeField] private Sprite[] languageSprites;
         [SerializeField] private Image imageComponent;
 
-        private void OnEnable() => YandexGame.SwitchLangEvent += UpdateLanguageSprite;
-
-        private void OnDisable() => YandexGame.SwitchLangEvent -= UpdateLanguageSprite;
-
         private void UpdateLanguageSprite(string newLanguage)
         {
             int languageIndex = -1;
