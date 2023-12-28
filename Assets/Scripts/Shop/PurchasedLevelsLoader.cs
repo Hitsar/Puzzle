@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Level;
 using Saves;
@@ -7,18 +8,23 @@ namespace Shop
 {
     public class PurchasedLevelsLoader : MonoBehaviour, ISaveableLevels
     {
-        [SerializeField] private PurchasedLevelButton[] _levels;
+        [field: SerializeField] public PurchasedLevelButton[] Levels { get; private set; }
+
+        private void Awake()
+        {
+            print(gameObject.name);
+        }
 
         public void Import(ProgressLevels progressWallet)
         {
-            _levels = progressWallet.Levels.ToArray();
+            Levels = progressWallet.Levels.ToArray();
         }
 
         public ProgressLevels Export()
         {
             return new ProgressLevels
             {
-                Levels = _levels.ToList()
+                Levels = Levels.ToList()
             };
         }
     }

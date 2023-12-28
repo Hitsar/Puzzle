@@ -6,10 +6,11 @@ namespace Shop
 {
     public class Wallet : MonoBehaviour, ISaveableMoney
     {
+        public int Money { get; private set; }
+
         [SerializeField] private TMP_Text _textMoney;
         [SerializeField] private TMP_Text _textMoneyForWin;
         
-        private int _money;
         private int _moneyForWin;
 
         private static Wallet _instance;
@@ -27,21 +28,21 @@ namespace Shop
 
         public void AddMoneyForWin()
         {
-            _money += _moneyForWin;
-            _textMoney.text = _money.ToString();          
+            Money += _moneyForWin;
+            _textMoney.text = Money.ToString();          
         }
 
         public bool RemoveMoney(int money)
         {
-            if (_money - money < 0 || money < 0) return false;
+            if (Money - money < 0 || money < 0) return false;
             
-            _money -= money;
-            _textMoney.text = _money.ToString();
+            Money -= money;
+            _textMoney.text = Money.ToString();
             
             return true;
         }
 
-        public void UpdateMoney() => _textMoney.text = _money.ToString();
+        public void UpdateMoney() => _textMoney.text = Money.ToString();
             
         public void SetMoneyForWin(int money)
         {
@@ -53,14 +54,15 @@ namespace Shop
 
         public void Import(ProgressWallet progressWallet)
         {
-            _money = progressWallet.MoneyCount;
+            Money = progressWallet.MoneyCount;
+            UpdateMoney();
         }
 
         public ProgressWallet Export()
         {
             return new ProgressWallet
             {
-                MoneyCount = _money
+                MoneyCount = Money
             };
         }
     }
