@@ -7,4 +7,17 @@ mergeInto(LibraryManager.library, {
         stringToUTF8(lang, buffer, bufferSize);
         return buffer;
     },
+
+    SaveExtern: function(date){
+        var dateString = UTF8ToString(date);
+        var myObj = JSON.parse(dateString);
+        player.setData(myObj);
+    }
+
+    LoadExtern: function(){
+        player.getData().then(_date => {
+            const myJson = JSON.stringify(_date);
+            myGameInstance.SendMessage("ProgressLoader", "Load", myJson);
+        });
+    }
 });

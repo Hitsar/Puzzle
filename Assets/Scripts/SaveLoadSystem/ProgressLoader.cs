@@ -11,14 +11,12 @@ namespace Saves
         private void Awake()
         {
             Debug.Log("Trying to load a game");
-            Load();
+            LocalStorage.Load();
         }
 
-        private void Load()
+        public void Load(string value)
         {
-            ProgressAsset progressAsset = LocalStorage.GetProgress();
-            if (progressAsset == null)
-                return;
+            var progressAsset = JsonUtility.FromJson<ProgressAsset>(value);
             ImportWalletFrom(progressAsset);
             ImportLevelsFrom(progressAsset);
             Debug.Log("Game loaded");
