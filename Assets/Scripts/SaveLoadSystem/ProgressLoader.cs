@@ -14,7 +14,15 @@ namespace Saves
             Load();
         }
 
-        private void Load() => LocalStorage.LoadProgress();
+        private void Load()
+        {
+            ProgressAsset progressAsset = LocalStorage.GetProgress();
+            if (progressAsset == null)
+                return;
+            ImportWalletFrom(progressAsset);
+            ImportLevelsFrom(progressAsset);
+            Debug.Log("Game loaded");
+        }
 
         private void ImportWalletFrom(ProgressAsset progressAsset) => _wallet.Import(progressAsset.ProgressWallet);
 

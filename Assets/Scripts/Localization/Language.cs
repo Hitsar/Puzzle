@@ -23,7 +23,8 @@ namespace Localization
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            CurrentLanguage = (LanguageTags)Enum.Parse(typeof(LanguageTags), GetLang(), true);
+            //CurrentLanguage = (LanguageTags)Enum.Parse(typeof(LanguageTags), GetLang(), true);
+            CurrentLanguage = LanguageTags.ru;
         }
     }
 }

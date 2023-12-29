@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Saves
@@ -8,26 +7,28 @@ namespace Saves
         private const string MUSIC_MUTED_KEY = "MusicMuted";
         private const string VOICES_MUTED_KEY = "VoicesMuted";
         private const string PROGRESS_KEY = "Progress";
-
-        [DllImport("__Internal")]
-        private static extern void SaveExtern(string date);
-
-        [DllImport("__Internal")]
-        private static extern void LoadExtern();
         
         public static void SaveProgress(ProgressAsset progress)
         {
             var progressJson = JsonUtility.ToJson(progress);
-            SaveExtern(progressJson);
+            PlayerPrefs.SetString(PROGRESS_KEY, progressJson);
+            PlayerPrefs.Save();
         }
-
-        public static void LoadProgress() => LoadExtern();
+        
+        public static ProgressAsset GetProgress()
+        {
+            var progressJson = PlayerPrefs.GetString(PROGRESS_KEY);
+            if (progressJson == null)
+                return null;
+            var progress = JsonUtility.FromJson<ProgressAsset>(progressJson);
+            return progress;
+        }
 
         public static void DeleteProgress()
         {
             PlayerPrefs.DeleteKey(PROGRESS_KEY);
         }
-
+        
         public static void SaveSettings(SettingsData settings)
         {
             PlayerPrefs.SetInt(MUSIC_MUTED_KEY, (bool)settings.MusicMuted ? 1 : 0);
@@ -37,7 +38,7 @@ namespace Saves
 
         public static SettingsData LoadSettings()
         {
-            SettingsData settings = new SettingsData();
+            var settings = new SettingsData();
             if (PlayerPrefs.HasKey(MUSIC_MUTED_KEY))
                 settings.MusicMuted = PlayerPrefs.GetInt(MUSIC_MUTED_KEY) == 1;
             if (PlayerPrefs.HasKey(VOICES_MUTED_KEY))

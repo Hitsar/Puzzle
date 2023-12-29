@@ -28,20 +28,24 @@ namespace Saves
 
         private void Save()
         {
-            ProgressAsset saveProfile = MakeSaveAsset();
+            var saveProfile = MakeSaveAsset();
             LocalStorage.SaveProgress(saveProfile);
         }
 
         private ProgressAsset MakeSaveAsset()
         {
-            ProgressAsset saveProfile = new ProgressAsset();
+            var saveProfile = new ProgressAsset();
             ExportMoneyTo(saveProfile);
             ExportLevelsTo(saveProfile);
             return saveProfile;
         }
 
-        private void ExportMoneyTo(ProgressAsset saveProfile) => saveProfile.ProgressWallet = _wallet.Export();
-        
+        private void ExportMoneyTo(ProgressAsset saveProfile)
+        {
+            saveProfile.ProgressWallet = _wallet.Export();
+            print(saveProfile.ProgressWallet.MoneyCount);
+        }
+
         private void ExportLevelsTo(ProgressAsset saveProfile) => saveProfile.ProgressLevels = _purchasedLevelsLoader.Export();
         
         private void OnApplicationQuit()
