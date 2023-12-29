@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
@@ -22,8 +23,7 @@ namespace Localization
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            //CurrentLanguage = (LanguageTags)Enum.Parse(typeof(LanguageTags), GetLang(), true);
-            CurrentLanguage = LanguageTags.en;
+            CurrentLanguage = (LanguageTags)Enum.Parse(typeof(LanguageTags), GetLang(), true);
         }
     }
 }
