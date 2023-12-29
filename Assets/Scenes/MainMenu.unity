@@ -134,6 +134,9 @@ GameObject:
   - component: {fileID: 614380}
   - component: {fileID: 614382}
   - component: {fileID: 614381}
+  - component: {fileID: 614385}
+  - component: {fileID: 614384}
+  - component: {fileID: 614383}
   m_Layer: 0
   m_Name: SaveLoadSystem
   m_TagString: Untagged
@@ -185,6 +188,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wallet: {fileID: 1634928429}
   _purchasedLevelsLoader: {fileID: 1634928432}
+--- !u!114 &614383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7526e1c7799946b58738eb882b4bed61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &614384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf8dc6bac1c49b2be1daddc38556b00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 614383}
+--- !u!114 &614385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351258465acf46b3b8e32a55ba16dde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicToggle: {fileID: 454670274}
+  VoiceToggle: {fileID: 940288515}
 --- !u!1001 &94816527
 PrefabInstance:
   m_ObjectHideFlags: 0
