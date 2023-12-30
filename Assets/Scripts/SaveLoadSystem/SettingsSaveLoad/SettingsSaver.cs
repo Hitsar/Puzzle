@@ -8,6 +8,7 @@ namespace Saves.SettingsSaveLoad
         [SerializeField] private SettingsValues _settings;
 
         private DateTime _lastSave;
+        
         private void Start()
         {
             _lastSave = DateTime.UtcNow;

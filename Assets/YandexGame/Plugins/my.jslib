@@ -12,12 +12,12 @@ mergeInto(LibraryManager.library, {
         var dateString = UTF8ToString(date);
         var myObj = JSON.parse(dateString);
         player.setData(myObj);
-    }
+    },
 
     LoadExtern: function(){
         player.getData().then(_date => {
             const myJson = JSON.stringify(_date);
             myGameInstance.SendMessage("ProgressLoader", "Load", myJson);
         });
-    }
+    },
 });

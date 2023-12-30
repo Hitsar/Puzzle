@@ -1,4 +1,5 @@
 using Shop;
+using TMPro;
 using UnityEngine;
 
 namespace Saves
@@ -7,16 +8,17 @@ namespace Saves
     {
         [SerializeField] private Wallet _wallet;
         [SerializeField] private PurchasedLevelsLoader _purchasedLevelsLoader;
+        [SerializeField] private TextMeshProUGUI _textMeshProUgui;
         
         private void Awake()
         {
             Debug.Log("Trying to load a game");
-            LocalStorage.Load();
+            Load();
         }
 
-        public void Load(string value)
+        private void Load()
         {
-            var progressAsset = JsonUtility.FromJson<ProgressAsset>(value);
+            var progressAsset = LocalStorage.GetProgress();
             ImportWalletFrom(progressAsset);
             ImportLevelsFrom(progressAsset);
             Debug.Log("Game loaded");

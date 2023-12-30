@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Saves
@@ -9,19 +8,12 @@ namespace Saves
         private const string VOICES_MUTED_KEY = "VoicesMuted";
         private const string PROGRESS_KEY = "Progress";
 
-        [DllImport("__Internal")]
-        private static extern void SaveExtern(string date);
-        
-        [DllImport("__Internal")]
-        private static extern void LoadExtern();
-        
         public static void SaveProgress(ProgressAsset progress)
         {
             var progressJson = JsonUtility.ToJson(progress);
-            SaveExtern(progressJson);
+            PlayerPrefs.SetString(PROGRESS_KEY, progressJson);
+            PlayerPrefs.Save();
         }
-
-        public static void Load() => LoadExtern();
         
         public static ProgressAsset GetProgress()
         {
