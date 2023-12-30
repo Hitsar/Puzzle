@@ -1,14 +1,28 @@
-using UnityEngine;
+using YG;
 
 namespace Level
 {
     public class AdvertisingLevelButton : PurchasedLevelButton
     {
-        protected override void Buy()
+        private void ShowAd()
         {
-            //TODO: показ рекламы, а пока будет так.
-            Debug.Log("========Реклама========");
-            EndBuy();
+            YandexGame.RewVideoShow(0);
+            YandexGame.RewardVideoEvent += OnReward;
+            YandexGame.ErrorVideoEvent += OnAdError;
         }
+
+        private void OnReward(int obj)
+        {
+            EndBuy();
+            OnAdError();
+        }
+
+        private void OnAdError()
+        {
+            YandexGame.RewardVideoEvent -= OnReward;
+            YandexGame.ErrorVideoEvent -= OnAdError;
+        }
+
+        protected override void Buy() => ShowAd();
     }
 }
