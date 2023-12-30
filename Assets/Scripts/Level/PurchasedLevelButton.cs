@@ -1,6 +1,5 @@
 using Shop;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Level
@@ -9,7 +8,7 @@ namespace Level
     {
         [SerializeField] private int _price;
         [SerializeField] private GameObject _buyButton;
-        public bool IsPurchased { get; private set; }
+        private bool _isPurchased;
         
         protected virtual void Buy()
         {
@@ -17,16 +16,16 @@ namespace Level
             EndBuy();
         }
 
-        public void EndBuy()
+        protected void EndBuy()
         {
             GetComponent<Image>().color = Color.white;
-            IsPurchased = true;
+            _isPurchased = true;
             _buyButton.SetActive(false);
         }
 
         public override void LoadLevel()
         {
-            if (!IsPurchased)
+            if (!_isPurchased)
             {
                 Buy();
                 return;
