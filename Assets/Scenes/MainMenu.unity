@@ -668,7 +668,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &377009347
 Transform:
@@ -803,7 +803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6491972409629419489, guid: d2921ba5143244d48862e950c217a36b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 158.32
+      value: 158.31982
       objectReference: {fileID: 0}
     - target: {fileID: 6491972409629419489, guid: d2921ba5143244d48862e950c217a36b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1329,11 +1329,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6017447597633656539, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -63.095
+      value: -63.095215
       objectReference: {fileID: 0}
     - target: {fileID: 6017447597633656539, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -76.8999
+      value: -76.899414
       objectReference: {fileID: 0}
     - target: {fileID: 6017447597633656539, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1711,7 +1711,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &615976707
 Transform:
@@ -2037,12 +2037,12 @@ GameObject:
   - component: {fileID: 704833741}
   - component: {fileID: 704833740}
   m_Layer: 5
-  m_Name: WinMenu
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &704833738
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5413,11 +5413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6491972409629419489, guid: d2921ba5143244d48862e950c217a36b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 308.40002
+      value: 308.3999
       objectReference: {fileID: 0}
     - target: {fileID: 6491972409629419489, guid: d2921ba5143244d48862e950c217a36b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -51.99951
+      value: -51.999023
       objectReference: {fileID: 0}
     - target: {fileID: 6491972409629419489, guid: d2921ba5143244d48862e950c217a36b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6608,11 +6608,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6017447597633656539, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -386.24
+      value: -386.24023
       objectReference: {fileID: 0}
     - target: {fileID: 6017447597633656539, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -79.19971
+      value: -79.200195
       objectReference: {fileID: 0}
     - target: {fileID: 6017447597633656539, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6831,6 +6831,7 @@ GameObject:
   - component: {fileID: 2087965135}
   - component: {fileID: 2087965134}
   - component: {fileID: 2087965133}
+  - component: {fileID: 2087965136}
   m_Layer: 5
   m_Name: x2Coins
   m_TagString: Untagged
@@ -6885,7 +6886,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6942,6 +6943,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087965131}
   m_CullTransparentMesh: 1
+--- !u!114 &2087965136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087965131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d651d7c30c7c433fbdcc61a68def2b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2105122724
 GameObject:
   m_ObjectHideFlags: 0
