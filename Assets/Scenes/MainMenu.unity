@@ -986,6 +986,7 @@ GameObject:
   - component: {fileID: 446822467}
   - component: {fileID: 446822466}
   - component: {fileID: 446822465}
+  - component: {fileID: 446822468}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -1006,8 +1007,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1157241303}
-  - {fileID: 940288514}
   - {fileID: 454670273}
+  - {fileID: 940288514}
   m_Father: {fileID: 1865942266}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1028,7 +1029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9de3071f3543b8a0f5b9fac7b06fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioMixer: {fileID: 0}
 --- !u!114 &446822466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,6 +1067,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446822463}
   m_CullTransparentMesh: 1
+--- !u!114 &446822468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446822463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbcf3dc4b4494d8da015874082201a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24100000, guid: 74bce24b312b29846820be8de7b4f58d, type: 2}
+  _musicToggle: {fileID: 454670274}
+  _soundToggle: {fileID: 940288515}
 --- !u!1 &454670272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1113,7 @@ RectTransform:
   m_Children:
   - {fileID: 1639337474}
   m_Father: {fileID: 446822464}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -1151,19 +1166,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1508057778744262548, guid: 74bce24b312b29846820be8de7b4f58d, type: 2}
-        m_TargetAssemblyTypeName: UnityEditor.Audio.AudioMixerGroupController, UnityEditor.CoreModule
-        m_MethodName: set_mute
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &487938220
 GameObject:
@@ -2648,7 +2651,7 @@ RectTransform:
   m_Children:
   - {fileID: 1906561051}
   m_Father: {fileID: 446822464}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -2701,19 +2704,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -6390444834653727346, guid: 74bce24b312b29846820be8de7b4f58d, type: 2}
-        m_TargetAssemblyTypeName: UnityEditor.Audio.AudioMixerGroupController, UnityEditor.CoreModule
-        m_MethodName: set_mute
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &1034624669
 GameObject:
