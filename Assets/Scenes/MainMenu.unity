@@ -706,6 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4d816d5cbf4ebfa941ee49438740e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _language: {fileID: 551246442}
   _englishText: Continue
   _russianText: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
   _spanishText: Continuar
@@ -1644,8 +1645,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551246441}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 538.9913, y: 278.7096, z: 6.1371193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3140,6 +3141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4d816d5cbf4ebfa941ee49438740e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _language: {fileID: 551246442}
   _englishText: Double
   _russianText: "\u0423\u0434\u0432\u043E\u0438\u0442\u044C"
   _spanishText: Duplicar
@@ -3233,7 +3235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6017447597633656539, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 17
+      value: 16.999939
       objectReference: {fileID: 0}
     - target: {fileID: 6017447597633656539, guid: ac607a24d3891bd4a8720bfd2aca3588, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4383,6 +4385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9315c4e647554ce891eff8216d440b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _language: {fileID: 551246442}
   _englishImage: {fileID: -1201906480, guid: b15b647c424e12f43a533645e8549b55, type: 3}
   _russianImage: {fileID: 60993995, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
   _spanishImage: {fileID: 20355344, guid: b15b647c424e12f43a533645e8549b55, type: 3}
@@ -7896,7 +7899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6491972409629419489, guid: d2921ba5143244d48862e950c217a36b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 17
+      value: 16.999939
       objectReference: {fileID: 0}
     - target: {fileID: 6491972409629419489, guid: d2921ba5143244d48862e950c217a36b, type: 3}
       propertyPath: m_AnchoredPosition.y

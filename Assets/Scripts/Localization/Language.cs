@@ -1,20 +1,17 @@
 using System;
-using System.Runtime.InteropServices;
 using UnityEngine;
+using YG;
 
 namespace Localization
 {
     public class Language : MonoBehaviour
     {
-        [DllImport("__Internal")]
-        private static extern string GetLang();
-        
-        public static LanguageTags CurrentLanguage;
+        private LanguageTags _currentLanguage;
+        public LanguageTags CurrentLanguage => _currentLanguage;
 
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
-            CurrentLanguage = (LanguageTags)Enum.Parse(typeof(LanguageTags), GetLang(), true);
+            _currentLanguage = (LanguageTags)Enum.Parse(typeof(LanguageTags), YandexGame.EnvironmentData.language, true);
         }
     }
 
