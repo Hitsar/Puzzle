@@ -4,15 +4,6 @@ using UnityEngine;
 
 namespace Localization
 {
-    public enum LanguageTags
-    {
-        en,
-        ru,
-        es,
-        tr,
-        de
-    }
-    
     public class Language : MonoBehaviour
     {
         [DllImport("__Internal")]
@@ -25,5 +16,14 @@ namespace Localization
             DontDestroyOnLoad(gameObject);
             CurrentLanguage = (LanguageTags)Enum.Parse(typeof(LanguageTags), GetLang(), true);
         }
+    }
+
+    public enum LanguageTags
+    {
+        en,
+        ru,
+        es,
+        tr,
+        de
     }
 }
