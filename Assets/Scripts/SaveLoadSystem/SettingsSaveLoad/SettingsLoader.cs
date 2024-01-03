@@ -1,20 +1,24 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UI;
+using Zenject;
+using Config;
 
 namespace Saves.SettingsSaveLoad
 {
     public class SettingsLoader : MonoBehaviour
     {
-        [SerializeField] private Toggle MusicToggle;
-        [SerializeField] private Toggle VoiceToggle;
-        
-        private void Awake()
+        private SettingsHolder _settingsHolder;
+        [Inject]
+        public void Construct( SettingsHolder settingsHolder)
         {
+            _settingsHolder = settingsHolder;
+        }
+
+        public void LoadSettings()
+        { 
             var settingsData = LocalStorage.LoadSettings();
-            if (settingsData.MusicMuted != null)
-                MusicToggle.isOn = (bool)settingsData.MusicMuted;
-            if (settingsData.VoicesMuted != null)
-                VoiceToggle.isOn = (bool)settingsData.VoicesMuted;
+            if (settingsData.MusicMuted != null && settingsData.VoicesMuted != null)
+                _settingsHolder.SetSettings((bool)settingsData.MusicMuted, (bool)settingsData.VoicesMuted);
             Debug.Log($"Settings Loaded. Music: {settingsData.MusicMuted}, Voices: {settingsData.VoicesMuted}");
         }
     }

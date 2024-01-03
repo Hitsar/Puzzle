@@ -1,6 +1,7 @@
+using Config;
 using Shop;
 using TMPro;
-using Ui;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,10 +17,16 @@ namespace Puzzles
         
         private short _puzzle = -1;
         private short _puzzlesInPlaceCount = -4;
-        
+        private SettingsHolder _settingsHolder;
+
+        public void Construct(SettingsHolder settingsHolder)
+        {
+            _settingsHolder = settingsHolder;
+        }
         public void ReplenishPuzzle(Vector2 position)
         {
             _audioInPlace.Play();
+
             _puzzlesInPlaceCount++;
             _puzzle++;
             

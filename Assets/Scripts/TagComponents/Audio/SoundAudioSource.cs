@@ -7,5 +7,11 @@ namespace Assets.Scripts.TagComponents.Audio
     {
         [SerializeField] private AudioSource _audioSource;
         public AudioSource AudioSource => _audioSource;
+
+        public void Init()
+        {
+            _audioSource.Play();
+            _audioSource.Stop();
+        }
     }
 }
