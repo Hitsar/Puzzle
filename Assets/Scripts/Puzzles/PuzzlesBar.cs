@@ -14,28 +14,22 @@ namespace Puzzles
         
         [SerializeField] private AudioSource _audioInPlace;
         [SerializeField] private AudioSource _audioWin;
-        
-        private short _puzzle = -1;
-        private short _puzzlesInPlaceCount = -4;
-        private SettingsHolder _settingsHolder;
 
-        public void Construct(SettingsHolder settingsHolder)
-        {
-            _settingsHolder = settingsHolder;
-        }
+        [Header("Should be negative of pieces in bar")]
+        [SerializeField] private short _puzzlesInPlaceCount;
+
+        private short _puzzle = -1;
         public void ReplenishPuzzle(Vector2 position)
         {
             _audioInPlace.Play();
 
+            //Debug.Log("Puzzles in place: " + _puzzlesInPlaceCount + ", puzzles amount: " + _puzzles.Length);
             _puzzlesInPlaceCount++;
             _puzzle++;
             
             if (_puzzlesInPlaceCount == _puzzles.Length)
             {
-                FindAnyObjectByType<WinPanelAnimator>(FindObjectsInactive.Include).gameObject.SetActive(true);
-                FindAnyObjectByType<Wallet>().AddMoneyForWin();
-                
-                _audioWin.Play();
+                FinishLevel();
                 return;
             }
             
@@ -47,6 +41,14 @@ namespace Puzzles
             puzzle.SetRayTarget(true);
         }
 
-        public void CloseOrOpen(bool isClose) => _upperBar.raycastTarget = isClose;
+        public void SetClose(bool isClose) => _upperBar.raycastTarget = isClose;
+
+        private void FinishLevel()
+        {
+            FindAnyObjectByType<WinPanelAnimator>(FindObjectsInactive.Include).gameObject.SetActive(true);
+            FindAnyObjectByType<Wallet>().AddMoneyForWin();
+
+            _audioWin.Play();
+        }
     }
 }

@@ -4686,6 +4686,10 @@ PrefabInstance:
       value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4591556835259963168, guid: 854bd796e2d287c47b095f6d081e1c2b, type: 3}
+      propertyPath: _puzzlesInPlaceCount
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591556835259963168, guid: 854bd796e2d287c47b095f6d081e1c2b, type: 3}
       propertyPath: _puzzles.Array.data[0]
       value: 
       objectReference: {fileID: 863402199}
