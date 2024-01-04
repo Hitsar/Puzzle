@@ -9,7 +9,5 @@ public class SpriteSizeTest : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(_image.sprite.rect.width);
-        Debug.Log(_image.sprite.rect.height);
     }
 }

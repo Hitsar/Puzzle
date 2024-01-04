@@ -9,7 +9,6 @@ namespace TagComponents.Audio
     {
         [SerializeField] private AudioSource _audioSource;
         public AudioSource AudioSource => _audioSource;
-        private bool _started = false;
         public void PlayMusic()
         {
             /*if (!_started)
