@@ -8,11 +8,14 @@ namespace PuzzleBuilder
     public class PuzzleBuilderCore : MonoBehaviour
     {
         private MaxPuzzleArea _maxPuzzleArea;
+        private PuzzleArea _puzzleArea;
+        [SerializeField] private Vector2 _testResize;
 
         [Inject]
-        public void Construct(MaxPuzzleArea maxPuzzleArea)
+        public void Construct(MaxPuzzleArea maxPuzzleArea, PuzzleArea puzzleArea)
         {
             _maxPuzzleArea = maxPuzzleArea;
+            _puzzleArea = puzzleArea;
         }
 
         private void Start()
@@ -27,7 +30,10 @@ namespace PuzzleBuilder
 
         private void LateStart()
         {
-            Debug.Log(_maxPuzzleArea.GetSize());
+            Vector2 maxPuzzleAreaSize = _maxPuzzleArea.GetSize();
+
+            Debug.Log(maxPuzzleAreaSize);
+            _puzzleArea.Resize(_testResize, maxPuzzleAreaSize);
         }
     }
 }
