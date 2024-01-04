@@ -23,7 +23,6 @@ namespace Puzzles
         {
             _audioInPlace.Play();
 
-            //Debug.Log("Puzzles in place: " + _puzzlesInPlaceCount + ", puzzles amount: " + _puzzles.Length);
             _puzzlesInPlaceCount++;
             _puzzle++;
             

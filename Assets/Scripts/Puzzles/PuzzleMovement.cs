@@ -50,7 +50,10 @@ namespace Puzzles
             _puzzlesBar.SetClose(false);
             _parent.ChangeRayTarget(false);
 
-            if (_transform.localPosition == Vector3.zero) _puzzlesBar.ReplenishPuzzle(_startPosition);
+            if (_transform.localPosition == Vector3.zero)
+            {
+                _puzzlesBar.ReplenishPuzzle(_startPosition);
+            }
             else
             {
                 MoveToStart();
