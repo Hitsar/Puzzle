@@ -7,6 +7,6 @@ namespace Saves
     [Serializable]
     public class ProgressLevels
     {
-        public List<PurchasedLevelButton> Levels;
+        public List<int> _purchasedLevels;
     }
 }

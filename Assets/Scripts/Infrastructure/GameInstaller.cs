@@ -7,12 +7,15 @@ using Audio;
 using UI;
 using Config;
 using Saves.SettingsSaveLoad;
-using UnityEngine.WSA;
+using Saves;
 
 namespace Infrastructure
 {
     public class GameInstaller : MonoInstaller
     {
+        [Header("Monobehaviours")]
+        [SerializeField] private LevelLinksHolder _levelLinksHolder;
+
         [Header("Audio")]
         [SerializeField] private AudioMixer _audioMixer;
 
@@ -44,6 +47,14 @@ namespace Infrastructure
                 .FromInstance(holder.SettingsLoader)
                 .AsSingle();
 
+            Container.Bind<ProgressSaver>()
+                .FromInstance(holder.ProgressSaver)
+                .AsSingle();
+
+            Container.Bind<ProgressLoader>()
+                .FromInstance(holder.ProgressLoader)
+                .AsSingle();
+
             Container.Bind<MusicToggle>()
                 .FromInstance(_musicToggle)
                 .AsSingle();
@@ -70,6 +81,10 @@ namespace Infrastructure
 
             Container.Bind<MetagameMediatorToLogic>()
                 .FromInstance(_metagameMediatorToLogic)
+                .AsSingle();
+
+            Container.Bind<LevelLinksHolder>()
+                .FromInstance (_levelLinksHolder) 
                 .AsSingle();
         }
     }

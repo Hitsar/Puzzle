@@ -19,7 +19,7 @@ namespace Config
 
         public void SetSettings(bool musicMuted, bool soundMuted)
         {
-            Debug.Log("Set settings" + musicMuted + soundMuted);
+            //Debug.Log("Set settings" + musicMuted + soundMuted);
             _musicMuted = musicMuted;
             _soundMuted = soundMuted;
             _audioMuter.SetMusicVolume(musicMuted);

@@ -12,11 +12,11 @@ namespace TagComponents.Audio
         private bool _started = false;
         public void PlayMusic()
         {
-            if (!_started)
+            /*if (!_started)
             {
                 _audioSource.Play();
                 _started = true;
-            }
+            }*/
         }
     }
 }

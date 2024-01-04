@@ -1,6 +1,8 @@
+using Saves;
 using Shop;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Level
 {
@@ -8,29 +10,45 @@ namespace Level
     {
         [SerializeField] private int _price;
         [SerializeField] private GameObject _buyButton;
-        private bool _isPurchased;
         
-        protected virtual void Buy()
+        [SerializeField] private bool _purchased;
+        private ProgressSaver _progressSaver;
+        public bool IsPurchased => _purchased;
+        public int Number => _level;
+        [Inject]
+        public void Construct(ProgressSaver progressSaver)
         {
-            if (!FindAnyObjectByType<Wallet>().RemoveMoney(_price)) return;
-            EndBuy();
+            _progressSaver = progressSaver;
         }
 
-        protected void EndBuy()
+        protected virtual void AttendBuy()
         {
-            GetComponent<Image>().color = Color.white;
-            _isPurchased = true;
-            _buyButton.SetActive(false);
+            if (!FindAnyObjectByType<Wallet>().RemoveMoney(_price)) return;
+            Buy();
+        }
+
+        protected void Buy()
+        {
+            OpenAccessToLevel();
+            _progressSaver.Save();
         }
 
         public override void LoadLevel()
         {
-            if (!_isPurchased)
+            if (!_purchased)
             {
-                Buy();
+                AttendBuy();
                 return;
             }
             base.LoadLevel();
+        }
+
+        public void OpenAccessToLevel()
+        {
+            //Debug.Log("Level " + _level + " opened");
+            GetComponent<Image>().color = Color.white;
+            _purchased = true;
+            _buyButton.SetActive(false);
         }
     }
 }

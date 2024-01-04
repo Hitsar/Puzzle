@@ -18,8 +18,10 @@ namespace Saves.SettingsSaveLoad
         { 
             var settingsData = LocalStorage.LoadSettings();
             if (settingsData.MusicMuted != null && settingsData.VoicesMuted != null)
-                _settingsHolder.SetSettings((bool)settingsData.MusicMuted, (bool)settingsData.VoicesMuted);
-            Debug.Log($"Settings Loaded. Music: {settingsData.MusicMuted}, Voices: {settingsData.VoicesMuted}");
+                _settingsHolder.SetMusicMuted((bool)settingsData.MusicMuted);
+            if (settingsData.VoicesMuted != null)
+                _settingsHolder.SetSoundMuted((bool)settingsData.VoicesMuted);
+            //Debug.Log($"Settings Loaded. Music: {settingsData.MusicMuted}, Voices: {settingsData.VoicesMuted}");
         }
     }
 }

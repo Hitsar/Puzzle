@@ -38,5 +38,12 @@ namespace Saves.SettingsSaveLoad
         {
             SaveSettings();
         }
+
+        private void OnApplicationFocus(bool focus)
+        {
+            Debug.Log("On application focus");
+            if (!focus)
+                SaveSettings();
+        }
     }
 }

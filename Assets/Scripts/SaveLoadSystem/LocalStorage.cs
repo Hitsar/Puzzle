@@ -42,8 +42,12 @@ namespace Saves
             var settings = new SettingsData();
             if (PlayerPrefs.HasKey(MUSIC_MUTED_KEY))
                 settings.MusicMuted = PlayerPrefs.GetInt(MUSIC_MUTED_KEY) == 1;
+            else
+                settings.MusicMuted = false;
             if (PlayerPrefs.HasKey(VOICES_MUTED_KEY))
                 settings.VoicesMuted = PlayerPrefs.GetInt(VOICES_MUTED_KEY) == 1;
+            else
+                settings.VoicesMuted = false;
             return settings;
 
         }

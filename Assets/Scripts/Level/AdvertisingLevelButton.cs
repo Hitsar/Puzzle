@@ -13,7 +13,7 @@ namespace Level
 
         private void OnReward(int obj)
         {
-            EndBuy();
+            Buy();
             OnAdError();
         }
 
@@ -23,6 +23,6 @@ namespace Level
             YandexGame.ErrorVideoEvent -= OnAdError;
         }
 
-        protected override void Buy() => ShowAd();
+        protected override void AttendBuy() => ShowAd();
     }
 }

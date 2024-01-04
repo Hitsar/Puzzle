@@ -460,7 +460,7 @@ namespace YG
 #if !UNITY_EDITOR
             BuyPaymentsInternal(id);
 #else
-            Message($"Buy Payment. ID: {id}");
+            Message($"AttendBuy Payment. ID: {id}");
             Instance.OnPurchaseSuccess(id);
 #endif
         }

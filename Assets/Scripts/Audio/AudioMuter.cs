@@ -23,8 +23,6 @@ namespace Audio
         public void SetMusicVolume(bool muted)
         {
             _audioMixer.SetFloat("Music", muted ? -80 : 0);
-            if (!muted)
-                _musicAudioSource.PlayMusic();
         }
         public void SetSoundVolume(bool muted)
         {

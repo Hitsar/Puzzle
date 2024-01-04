@@ -6,7 +6,7 @@ namespace Level
 {
     public class LevelButton : MonoBehaviour
     {
-        [SerializeField] private int _level;
+        [SerializeField] protected int _level;
         [SerializeField] private int _moneyForWin;
 
         public virtual void LoadLevel()

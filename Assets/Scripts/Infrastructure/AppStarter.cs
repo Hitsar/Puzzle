@@ -1,20 +1,22 @@
 using Saves.SettingsSaveLoad;
 using TagComponents.Audio;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
+using Saves;
 
 public class AppStarter : MonoBehaviour
 {
     private SettingsLoader _settingsLoader;
-    private MusicAudioSource _musicAudioSource;
+    
     [Inject]
-    public void Construct(SettingsLoader settingsLoader, MusicAudioSource musicAudioSource)
+    public void Construct(SettingsLoader settingsLoader)
     {
         _settingsLoader = settingsLoader;
-        _musicAudioSource = musicAudioSource;
     }
     private void Start()
     {
+        Debug.Log("App started");
         _settingsLoader.LoadSettings();
     }
 }

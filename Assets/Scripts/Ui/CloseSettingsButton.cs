@@ -15,8 +15,8 @@ namespace UI
             _metagameMediatorToUI = metagameMediatorToUI;
         }
 
-        private void OnEnable() => _button.onClick.AddListener(delegate { OnClick(); });
-        private void OnClick() => _metagameMediatorToUI.HideSettingsPanel();
-        private void OnDisable() => _button.onClick.RemoveListener(delegate { OnClick(); });
+        //private void OnEnable() => _button.onClick.AddListener(delegate { OnClick(); });
+        public void OnClick() => _metagameMediatorToUI.HideSettingsPanel();
+        //private void OnDisable() => _button.onClick.RemoveListener(delegate { OnClick(); });
     }
 }

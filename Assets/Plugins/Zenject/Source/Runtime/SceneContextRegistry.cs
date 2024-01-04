@@ -6,6 +6,11 @@ namespace Zenject
 {
     public class SceneContextRegistry
     {
+        [Inject]
+        public SceneContextRegistry() 
+        { 
+        }
+
         readonly Dictionary<Scene, SceneContext> _map = new Dictionary<Scene, SceneContext>();
 
         public IEnumerable<SceneContext> SceneContexts
