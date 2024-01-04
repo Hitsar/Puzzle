@@ -18,6 +18,13 @@ namespace PuzzleBuilder
                 absoluteSize = new Vector2(maxPuzzleAreaSize.x, relativeSize.y / relativeSize.x * maxPuzzleAreaSize.x);
             }
 
+            if (absoluteSize.x > maxPuzzleAreaSize.x)
+                absoluteSize = new Vector2(maxPuzzleAreaSize.x, absoluteSize.y * (maxPuzzleAreaSize.x / absoluteSize.x));
+
+            if (absoluteSize.y > maxPuzzleAreaSize.y)
+                absoluteSize = new Vector2 (absoluteSize.x * (maxPuzzleAreaSize.y / absoluteSize.y), maxPuzzleAreaSize.y);
+            
+
             float offsetX = (maxPuzzleAreaSize.x - absoluteSize.x) / (2 * maxPuzzleAreaSize.x); //relative distance between MaxPuzzleArea border and vertical PuzzleArea border
             Vector2 anchorX = new Vector2(offsetX ,  (1 - offsetX));
             float offsetY = (maxPuzzleAreaSize.y - absoluteSize.y) / (2 * maxPuzzleAreaSize.y); //relative distance between MaxPuzzleArea border and horizontal PuzzleArea border
