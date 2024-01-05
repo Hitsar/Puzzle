@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using Zenject;
 using UnityEngine.UI;
 using PuzzleBuilder;
+using System;
 
 namespace Puzzles
 {
@@ -18,6 +19,7 @@ namespace Puzzles
         public Image Image => _image;
         public Sprite Sprite => _image.sprite;
         public RectTransform RectTransform => _rectTransform;
+        public static event EventHandler PiecePlaced;
 
         private const int closeDistanceModifier = 16;
         public void OnEnable()
@@ -44,12 +46,18 @@ namespace Puzzles
             if(_sketchPiece != null && Vector2.Distance(_rectTransform.position, _sketchPiece.RectTransform.position) < _rectTransform.sizeDelta.x / closeDistanceModifier)
             {
                 _rectTransform.position = _sketchPiece.RectTransform.position;
+                OnPiecePlaced();
             }
             else
             {
                 MoveToStart();
                 SetRayTarget(true);
             }
+        }
+
+        private void OnPiecePlaced()
+        {
+            PiecePlaced?.Invoke(this, EventArgs.Empty);
         }
 
         public void SetRayTarget(bool isActive) => _image.raycastTarget = isActive;

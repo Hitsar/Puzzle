@@ -2,6 +2,7 @@ using Zenject;
 using UnityEngine;
 using PuzzleBuilder;
 using Puzzles;
+using Audio;
 
 namespace Infrastructure
 {
@@ -15,6 +16,7 @@ namespace Infrastructure
         [SerializeField] private PuzzleArea _puzzleArea;
         [SerializeField] private PuzzleResizer _puzzleResizer;
         [SerializeField] private PiecesSpawner _peicesSpawner;
+        [SerializeField] private WinAudio _winAudio;
 
         [Header("UI")]
         [SerializeField] private Canvas _canvas;
@@ -63,6 +65,10 @@ namespace Infrastructure
 
             Container.Bind<LayoutPuzzleBar>()
                 .FromInstance(_puzzleBar)
+                .AsSingle();
+
+            Container.Bind<WinAudio>()
+                .FromInstance(_winAudio) 
                 .AsSingle();
         }
     }
