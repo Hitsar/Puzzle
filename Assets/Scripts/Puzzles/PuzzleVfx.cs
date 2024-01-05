@@ -5,9 +5,8 @@ namespace Puzzles
 {
     public class PuzzleVfx
     {
-        private readonly Transform _transform;
-
-        public PuzzleVfx(Transform transform) => _transform = transform;
+        private Transform _transform;
+        public void SetTransform(Transform transform) => _transform = transform;
 
         public void MoveTo(Vector2 position)
         {

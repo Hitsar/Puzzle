@@ -20,7 +20,8 @@ namespace Puzzles
         {
             _transform = GetComponent<RectTransform>();
             _image = GetComponent<Image>();
-            _vfx = new PuzzleVfx(transform);
+            _vfx = new PuzzleVfx();
+            _vfx.SetTransform(_transform);
             
             _canvas = GetComponentInParent<Canvas>();
             _parent = GetComponentInParent<PuzzleSlot>();

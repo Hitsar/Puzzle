@@ -1,6 +1,7 @@
 using Zenject;
 using UnityEngine;
 using PuzzleBuilder;
+using Puzzles;
 
 namespace Infrastructure
 {
@@ -14,6 +15,9 @@ namespace Infrastructure
         [SerializeField] private PuzzleArea _puzzleArea;
         [SerializeField] private PuzzleResizer _puzzleResizer;
         [SerializeField] private PiecesSpawner _peicesSpawner;
+
+        [Header("UI")]
+        [SerializeField] private Canvas _canvas;
         public override void InstallBindings()
         {
             Container.Bind<MaxPuzzleArea>()
@@ -47,6 +51,14 @@ namespace Infrastructure
             Container.Bind<PuzzlePlacer>()
                 .To<PuzzlePlacer>()
                 .AsSingle();
+
+            Container.Bind<Canvas>()
+                .FromInstance(_canvas)
+                .AsSingle();
+
+            Container.Bind<PuzzleVfx>()
+                .To<PuzzleVfx>()
+                .AsTransient();
         }
     }
 }
