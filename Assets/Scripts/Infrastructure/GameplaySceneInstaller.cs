@@ -13,6 +13,7 @@ namespace Infrastructure
         [SerializeField] private MaxPuzzleArea _maxPuzzleArea;
         [SerializeField] private PuzzleArea _puzzleArea;
         [SerializeField] private PuzzleResizer _puzzleResizer;
+        [SerializeField] private PiecesSpawner _peicesSpawner;
         public override void InstallBindings()
         {
             Container.Bind<MaxPuzzleArea>()
@@ -37,6 +38,10 @@ namespace Infrastructure
 
             Container.Bind<PuzzleResizer>()
                 .FromInstance(_puzzleResizer) 
+                .AsSingle();
+
+            Container.Bind<PiecesSpawner>()
+                .FromInstance(_peicesSpawner) 
                 .AsSingle();
         }
     }

@@ -14,17 +14,17 @@ namespace PuzzleBuilder
         private PuzzleSizeQualifier _puzzleSizeQualifier;
         private PuzzlesDataSO _puzzleDataSO;
         private ConvexSizeCalculator _convexSizeCalculator;
-        private PuzzleResizer _puzzleResizer;
+        private PiecesSpawner _piecesSpawner;
 
         [Inject]
-        public void Construct(MaxPuzzleArea maxPuzzleArea, PuzzleArea puzzleArea, PuzzleSizeQualifier puzzleSizeQualifier, PuzzlesDataSO puzzlesDataSO, ConvexSizeCalculator convexSizeCalculator, PuzzleResizer puzzleResizer)
+        public void Construct(MaxPuzzleArea maxPuzzleArea, PuzzleArea puzzleArea, PuzzleSizeQualifier puzzleSizeQualifier, PuzzlesDataSO puzzlesDataSO, ConvexSizeCalculator convexSizeCalculator, PiecesSpawner piecesSpawner)
         {
             _maxPuzzleArea = maxPuzzleArea;
             _puzzleArea = puzzleArea;
             _puzzleSizeQualifier = puzzleSizeQualifier;
             _puzzleDataSO = puzzlesDataSO;
             _convexSizeCalculator = convexSizeCalculator;
-            _puzzleResizer = puzzleResizer;
+            _piecesSpawner = piecesSpawner;
         }
 
         private void Start()
@@ -53,7 +53,7 @@ namespace PuzzleBuilder
             Debug.Log("OriginalImageSize : " + originalImageSize);
             Debug.Log("PuzzleAreaSize : " + puzzleAreaSize);
 
-            List<Vector2> piecesResizes = _puzzleResizer.ResizePuzzlePieces(puzzleData.Sprites, puzzleAreaSize, originalImageSize);
+            _piecesSpawner.CreatePieces(puzzleData.Sprites, puzzleAreaSize, originalImageSize);
         }
     }
 }
