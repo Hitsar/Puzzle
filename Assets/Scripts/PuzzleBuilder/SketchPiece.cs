@@ -1,9 +1,10 @@
+using Puzzles;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace PuzzleBuilder
 {
-    public class SketchPiece : MonoBehaviour
+    public class SketchPiece : MonoBehaviour, IPuzzlePiece
     {
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Image _image;
@@ -11,8 +12,6 @@ namespace PuzzleBuilder
         public RectTransform RectTransform => _rectTransform;
         public Image Image => _image;
         public Sprite Sprite => _image.sprite;
-
-        public void SetRayTarget(bool isActive) => _image.raycastTarget = isActive;
     }
 }
 

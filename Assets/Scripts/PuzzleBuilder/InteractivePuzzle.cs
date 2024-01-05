@@ -6,7 +6,7 @@ using PuzzleBuilder;
 
 namespace Puzzles
 {
-    public class InteractivePuzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+    public class InteractivePuzzle : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPuzzlePiece
     {
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Image _image;
@@ -15,20 +15,21 @@ namespace Puzzles
         private PuzzleVfx _vfx;
         private Vector2 _startPosition;
 
+        public Image Image => _image;
+        public Sprite Sprite => _image.sprite;
+        public RectTransform RectTransform => _rectTransform;
+
         private const int closeDistanceModifier = 16;
-        [Inject]
-        public void Construct(Canvas canvas, PuzzleVfx puzzleVfx)
+        public void OnEnable()
         {
-            _canvas = canvas;
             SetStartPosition(_rectTransform.position);
-            _vfx = puzzleVfx;
+            _vfx = new PuzzleVfx();
             _vfx.SetTransform(_rectTransform);
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             SetRayTarget(false);
-            _sketchPiece.SetRayTarget(true);
             SetStartPosition(_rectTransform.position);
             _vfx.Select();
         }
@@ -40,9 +41,7 @@ namespace Puzzles
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            _sketchPiece.SetRayTarget(false);
-
-            if( Vector2.Distance(_rectTransform.position, _sketchPiece.RectTransform.position) < _rectTransform.sizeDelta.x / closeDistanceModifier)
+            if(_sketchPiece != null && Vector2.Distance(_rectTransform.position, _sketchPiece.RectTransform.position) < _rectTransform.sizeDelta.x / closeDistanceModifier)
             {
                 _rectTransform.position = _sketchPiece.RectTransform.position;
             }
@@ -55,7 +54,9 @@ namespace Puzzles
 
         public void SetRayTarget(bool isActive) => _image.raycastTarget = isActive;
         public void SetStartPosition(Vector2 position) => _startPosition = position;
+        public void ConnectToSketchPiece(SketchPiece sketchPiece) => _sketchPiece = sketchPiece;
         public void MoveToStart() => _vfx.MoveTo(_startPosition);
+        public void SetCanvas(Canvas canvas) => _canvas = canvas;
     }
 }
 

@@ -18,6 +18,7 @@ namespace Infrastructure
 
         [Header("UI")]
         [SerializeField] private Canvas _canvas;
+        [SerializeField] private LayoutPuzzleBar _puzzleBar;
         public override void InstallBindings()
         {
             Container.Bind<MaxPuzzleArea>()
@@ -59,6 +60,10 @@ namespace Infrastructure
             Container.Bind<PuzzleVfx>()
                 .To<PuzzleVfx>()
                 .AsTransient();
+
+            Container.Bind<LayoutPuzzleBar>()
+                .FromInstance(_puzzleBar)
+                .AsSingle();
         }
     }
 }
