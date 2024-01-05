@@ -16,8 +16,9 @@ namespace PuzzleBuilder
         private ConvexSizeCalculator _convexSizeCalculator;
         private LayoutPuzzleBar _layoutPuzzleBar;
         private Canvas _canvas;
+        private PuzzleDump _puzzleDump; 
         [Inject]
-        public void Construct(PuzzleResizer puzzleResizer, PuzzlePlacer puzzlePlacer, PuzzleSizeQualifier puzzleSizeQualifier, ConvexSizeCalculator convexSizeCalculator, LayoutPuzzleBar layoutPuzzleBar, Canvas canvas)
+        public void Construct(PuzzleResizer puzzleResizer, PuzzlePlacer puzzlePlacer, PuzzleSizeQualifier puzzleSizeQualifier, ConvexSizeCalculator convexSizeCalculator, LayoutPuzzleBar layoutPuzzleBar, Canvas canvas, PuzzleDump puzzleDump)
         {
             _puzzleResizer = puzzleResizer;
             _puzzlePlacer = puzzlePlacer;
@@ -25,11 +26,13 @@ namespace PuzzleBuilder
             _convexSizeCalculator = convexSizeCalculator;
             _layoutPuzzleBar = layoutPuzzleBar;
             _canvas = canvas;
+            _puzzleDump = puzzleDump;
         }
 
         public void CreatePieces(List<Sprite> sprites, Vector2 puzzleAreaSize, Vector2 originalImageSize, Vector2 dimensionalSize)
         {
-            List<SketchPiece> spawnedPieces = new List<SketchPiece>(); 
+            List<SketchPiece> spawnedPieces = new List<SketchPiece>();
+            List<InteractivePuzzle> interactivePuzzles = new List<InteractivePuzzle>();
             foreach (var sprite in sprites) 
             {
                 GameObject newPiece = Instantiate(_sketchPiecePrefab, gameObject.transform);
@@ -38,12 +41,13 @@ namespace PuzzleBuilder
                 _puzzleResizer.ResizePuzzlePiece(sketchPieceComponent, puzzleAreaSize, originalImageSize);
                 spawnedPieces.Add(sketchPieceComponent);
 
-                GameObject newInteractivePiece = Instantiate(_interactivePiecePrefab, _layoutPuzzleBar.transform);
+                GameObject newInteractivePiece = Instantiate(_interactivePiecePrefab);
                 InteractivePuzzle interactivePuzzleComponent = newInteractivePiece.GetComponent<InteractivePuzzle>();
                 interactivePuzzleComponent.ConnectToSketchPiece(sketchPieceComponent);
                 interactivePuzzleComponent.Image.sprite = sprite;
                 interactivePuzzleComponent.SetCanvas(_canvas);
                 _puzzleResizer.ResizePuzzlePiece(interactivePuzzleComponent, puzzleAreaSize, originalImageSize);
+                interactivePuzzles.Add(interactivePuzzleComponent);
             }
 
             Vector2 adaptedMinMax = _puzzleSizeQualifier.GetMinMaxSize(spawnedPieces);
@@ -55,6 +59,10 @@ namespace PuzzleBuilder
             {
                 _puzzlePlacer.PlacePieceOnPosition(piece.RectTransform, adaptedMinMax, convexSize, puzzleAreaSize, dimensionalSize);
             }
+
+            _layoutPuzzleBar.PrepareSlots((int)dimensionalSize.x, new Vector2(adaptedMinMax.y, adaptedMinMax.y) / 1.7f);
+
+            _puzzleDump.SetPuzzlePieces(interactivePuzzles, (int)dimensionalSize.x);
         }
     }
 }

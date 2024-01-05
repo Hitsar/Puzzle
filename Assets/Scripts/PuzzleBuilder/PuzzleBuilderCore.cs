@@ -14,15 +14,17 @@ namespace PuzzleBuilder
         private PuzzleSizeQualifier _puzzleSizeQualifier;
         private PuzzlesDataSO _puzzleDataSO;
         private PiecesSpawner _piecesSpawner;
+        private GameStateObserver _gameStateObserver;
 
         [Inject]
-        public void Construct(MaxPuzzleArea maxPuzzleArea, PuzzleArea puzzleArea, PuzzleSizeQualifier puzzleSizeQualifier, PuzzlesDataSO puzzlesDataSO, PiecesSpawner piecesSpawner)
+        public void Construct(MaxPuzzleArea maxPuzzleArea, PuzzleArea puzzleArea, PuzzleSizeQualifier puzzleSizeQualifier, PuzzlesDataSO puzzlesDataSO, PiecesSpawner piecesSpawner, GameStateObserver gameStateObserver)
         {
             _maxPuzzleArea = maxPuzzleArea;
             _puzzleArea = puzzleArea;
             _puzzleSizeQualifier = puzzleSizeQualifier;
             _puzzleDataSO = puzzlesDataSO;
             _piecesSpawner = piecesSpawner;
+            _gameStateObserver = gameStateObserver;
         }
 
         private void Start()
@@ -49,6 +51,7 @@ namespace PuzzleBuilder
             Debug.Log("PuzzleAreaSize : " + puzzleAreaSize);
 
             _piecesSpawner.CreatePieces(puzzleData.Sprites, puzzleAreaSize, originalImageSize, puzzleData.Size);
+            _gameStateObserver.Init(puzzleData.Size);
         }
     }
 }

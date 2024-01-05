@@ -21,7 +21,7 @@ namespace Puzzles
         public RectTransform RectTransform => _rectTransform;
         public static event EventHandler PiecePlaced;
 
-        private const int closeDistanceModifier = 16;
+        private const int closeDistanceModifier = 10;
         public void OnEnable()
         {
             SetStartPosition(_rectTransform.position);
@@ -46,6 +46,7 @@ namespace Puzzles
             if(_sketchPiece != null && Vector2.Distance(_rectTransform.position, _sketchPiece.RectTransform.position) < _rectTransform.sizeDelta.x / closeDistanceModifier)
             {
                 _rectTransform.position = _sketchPiece.RectTransform.position;
+                _rectTransform.SetParent(_sketchPiece.RectTransform);
                 OnPiecePlaced();
             }
             else

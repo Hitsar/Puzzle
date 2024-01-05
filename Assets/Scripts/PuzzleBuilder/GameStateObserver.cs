@@ -4,6 +4,7 @@ using Shop;
 using System;
 using UI;
 using UnityEngine;
+using Zenject;
 
 namespace PuzzleBuilder
 {
@@ -12,9 +13,12 @@ namespace PuzzleBuilder
         private int _piecesInPuzzle = 0;
         private int _placedPieces = 0;
         private AudioSource _winAudio;
-        public GameStateObserver(WinAudio winAudio) 
+        private AudioSource _inPlaceAudio;
+        [Inject]
+        public GameStateObserver(WinAudio winAudio, AudioInPlace audioInPlace) 
         {
             _winAudio = winAudio.AudioSource;
+            _inPlaceAudio = audioInPlace.AudioSource;
         }
 
         public void Init(Vector2 puzzleSize)
@@ -25,6 +29,7 @@ namespace PuzzleBuilder
 
         private void AddPlacedPuzzles(object sender, EventArgs e)
         {
+            _inPlaceAudio.Play();
             _placedPieces++;
 
             if (_placedPieces == _piecesInPuzzle)

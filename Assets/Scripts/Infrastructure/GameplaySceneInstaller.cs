@@ -17,10 +17,12 @@ namespace Infrastructure
         [SerializeField] private PuzzleResizer _puzzleResizer;
         [SerializeField] private PiecesSpawner _peicesSpawner;
         [SerializeField] private WinAudio _winAudio;
+        [SerializeField] private AudioInPlace _audioInPlace;
 
         [Header("UI")]
         [SerializeField] private Canvas _canvas;
         [SerializeField] private LayoutPuzzleBar _puzzleBar;
+        [SerializeField] private PuzzleDump _puzzleDump;
         public override void InstallBindings()
         {
             Container.Bind<MaxPuzzleArea>()
@@ -69,6 +71,18 @@ namespace Infrastructure
 
             Container.Bind<WinAudio>()
                 .FromInstance(_winAudio) 
+                .AsSingle();
+
+            Container.Bind<GameStateObserver>()
+                .To<GameStateObserver>()
+                .AsSingle();
+
+            Container.Bind<AudioInPlace>()
+                .FromInstance(_audioInPlace) 
+                .AsSingle();
+
+            Container.Bind<PuzzleDump>()
+                .FromInstance(_puzzleDump)
                 .AsSingle();
         }
     }
