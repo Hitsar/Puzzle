@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a5b357712d1b242acb6a86751fdaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testResize: {x: 4, y: 7}
+  _testLevelNumber: 4
 --- !u!1 &493525129
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 620899010}
   - component: {fileID: 620899009}
   - component: {fileID: 620899011}
+  - component: {fileID: 620899012}
   m_Layer: 5
   m_Name: PuzzleArea
   m_TagString: Untagged
@@ -437,6 +438,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 620899008}
+--- !u!114 &620899012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620899007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db780b7bc3357bc49ab872ddcba29211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1236374827
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,8 +701,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1606896ed69d2564aa66bd90c3a3639f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _puzzleDataSO: {fileID: 11400000, guid: ce19b7b84e75cc74dad3616442aa46c9, type: 2}
   _maxPuzzleArea: {fileID: 1627778665}
   _puzzleArea: {fileID: 620899011}
+  _puzzleResizer: {fileID: 620899012}
 --- !u!1 &1614824139
 GameObject:
   m_ObjectHideFlags: 0

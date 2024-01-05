@@ -6,8 +6,13 @@ namespace Infrastructure
 {
     public class GameplaySceneInstaller : MonoInstaller
     {
+        [Header("ScriptableObjects")]
+        [SerializeField] private PuzzlesDataSO _puzzleDataSO;
+
+        [Header("Monobehaviours")]
         [SerializeField] private MaxPuzzleArea _maxPuzzleArea;
         [SerializeField] private PuzzleArea _puzzleArea;
+        [SerializeField] private PuzzleResizer _puzzleResizer;
         public override void InstallBindings()
         {
             Container.Bind<MaxPuzzleArea>()
@@ -16,6 +21,22 @@ namespace Infrastructure
 
             Container.Bind<PuzzleArea>()
                 .FromInstance(_puzzleArea)
+                .AsSingle();
+
+            Container.Bind<PuzzleSizeQualifier>()
+                .To<PuzzleSizeQualifier>()
+                .AsSingle();
+
+            Container.Bind<PuzzlesDataSO>()
+                .FromInstance(_puzzleDataSO) 
+                .AsSingle();
+
+            Container.Bind<ConvexSizeCalculator>()
+                .To<ConvexSizeCalculator>()
+                .AsSingle();
+
+            Container.Bind<PuzzleResizer>()
+                .FromInstance(_puzzleResizer) 
                 .AsSingle();
         }
     }
