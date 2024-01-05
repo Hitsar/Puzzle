@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace PuzzleBuilder
 {
     public class ConvexSizeCalculator

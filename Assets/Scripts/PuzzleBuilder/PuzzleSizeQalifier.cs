@@ -5,30 +5,48 @@ namespace PuzzleBuilder
 {
     public class PuzzleSizeQualifier
     {
-        public Vector2 GetMinMaxSize(List<Sprite> puzzleSprites)
+        public Vector2 GetMinMaxSize(List<Vector2> puzzleSizes)
         {
-            if (puzzleSprites.Count == 0)
+            if (puzzleSizes.Count == 0)
             {
                 Debug.LogError("No sprites in list");
                 return Vector2.zero;
             }
 
-            float minSize = puzzleSprites[0].rect.width < puzzleSprites[0].rect.height ? puzzleSprites[0].rect.width : puzzleSprites[0].rect.height;
-            float maxSize = puzzleSprites[0].rect.width > puzzleSprites[0].rect.height ? puzzleSprites[0].rect.width : puzzleSprites[0].rect.height;
+            float minSize = puzzleSizes[0].x < puzzleSizes[0].y ? puzzleSizes[0].x : puzzleSizes[0].y;
+            float maxSize = puzzleSizes[0].x > puzzleSizes[0].y ? puzzleSizes[0].x : puzzleSizes[0].y;
 
-            for (int i = 0; i < puzzleSprites.Count; i++)
+            for (int i = 0; i < puzzleSizes.Count; i++)
             {
-                if (puzzleSprites[i].rect.width < minSize)
-                    minSize = puzzleSprites[i].rect.width;
-                else if (puzzleSprites[i].rect.height < minSize)
-                    minSize = puzzleSprites[i].rect.width;
-                else if (puzzleSprites[i].rect.width > maxSize)
-                    maxSize = puzzleSprites[i].rect.width;
-                else if (puzzleSprites[i].rect.height > maxSize)
-                    maxSize = puzzleSprites[i].rect.height;
+                if (puzzleSizes[i].x < minSize)
+                    minSize = puzzleSizes[i].x;
+                else if (puzzleSizes[i].y < minSize)
+                    minSize = puzzleSizes[i].y;
+                else if (puzzleSizes[i].x > maxSize)
+                    maxSize = puzzleSizes[i].x;
+                else if (puzzleSizes[i].y > maxSize)
+                    maxSize = puzzleSizes[i].y;
             }
 
             return new Vector2(minSize, maxSize);
+        }
+
+        public Vector2 GetMinMaxSize(List<SketchPiece> puzzlePieces)
+        {
+            List<Vector2> puzzleSizes = new List<Vector2>();
+            foreach (var piece in puzzlePieces)
+                puzzleSizes.Add(piece.RectTransform.sizeDelta);
+
+            return GetMinMaxSize(puzzleSizes);
+        }
+
+        public Vector2 GetMinMaxSize(List<Sprite> puzzleSprites)
+        {
+            List<Vector2> puzzleSizes = new List<Vector2>();
+            foreach (var piece in puzzleSprites)
+                puzzleSizes.Add(piece.rect.size);
+
+            return GetMinMaxSize(puzzleSizes);
         }
     }
 }

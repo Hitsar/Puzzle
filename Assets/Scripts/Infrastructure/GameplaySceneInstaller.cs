@@ -43,6 +43,10 @@ namespace Infrastructure
             Container.Bind<PiecesSpawner>()
                 .FromInstance(_peicesSpawner) 
                 .AsSingle();
+
+            Container.Bind<PuzzlePlacer>()
+                .To<PuzzlePlacer>()
+                .AsSingle();
         }
     }
 }
