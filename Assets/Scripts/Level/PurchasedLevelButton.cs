@@ -45,7 +45,7 @@ namespace Level
 
         public void OpenAccessToLevel()
         {
-            //Debug.Log("Level " + _level + " opened");
+            //Debug.Log("Level " + _levelNumber + " opened");
             GetComponent<Image>().color = Color.white;
             _purchased = true;
             _buyButton.SetActive(false);

@@ -24,10 +24,9 @@ namespace PuzzleBuilder
         public void Init(Vector2 puzzleSize)
         {
             _piecesInPuzzle = (int)puzzleSize.x * (int)puzzleSize.y;
-            InteractivePuzzle.PiecePlaced += AddPlacedPuzzles;
         }
 
-        private void AddPlacedPuzzles(object sender, EventArgs e)
+        public void AddPlacedPuzzles()
         {
             _inPlaceAudio.Play();
             _placedPieces++;
@@ -44,7 +43,6 @@ namespace PuzzleBuilder
             MonoBehaviour.FindAnyObjectByType<Wallet>().AddMoneyForWin();
 
             _winAudio.Play();
-            InteractivePuzzle.PiecePlaced -= AddPlacedPuzzles;
         }
     }
 }

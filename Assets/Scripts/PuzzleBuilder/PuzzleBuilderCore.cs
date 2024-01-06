@@ -39,16 +39,24 @@ namespace PuzzleBuilder
 
         private void LateStart()
         {
+            int levelNumber;
+            if (LevelNumberPasser.Instance != null)
+            {
+                levelNumber = LevelNumberPasser.LevelNumber;
+            }
+            else
+            {
+                levelNumber = _testLevelNumber;
+            }
+
             Vector2 maxPuzzleAreaSize = _maxPuzzleArea.GetSize();
-            PuzzleData puzzleData = _puzzleDataSO.GetPuzzle(_testLevelNumber);
+            PuzzleData puzzleData = _puzzleDataSO.GetPuzzle(levelNumber);
             Vector2 puzzleAreaSize = _puzzleArea.Resize(puzzleData.Size, maxPuzzleAreaSize);
 
             Vector2 originalMinMax = _puzzleSizeQualifier.GetMinMaxSize(puzzleData.Sprites);
             //Debug.Log("OriginalMinMax : " + originalMinMax);
 
             Vector2 originalImageSize = puzzleData.OriginalImage.rect.size;
-            Debug.Log("OriginalImageSize : " + originalImageSize);
-            Debug.Log("PuzzleAreaSize : " + puzzleAreaSize);
 
             _piecesSpawner.CreatePieces(puzzleData.Sprites, puzzleAreaSize, originalImageSize, puzzleData.Size);
             _gameStateObserver.Init(puzzleData.Size);

@@ -8,7 +8,6 @@ namespace Puzzles
     {
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private GameObject _slotPrefab;
-        private List<RectTransform> _slots = new List<RectTransform>();
         public void PrepareSlots(int slotsToPrepare, Vector2 size)
         {
             for (int i = 0; i < slotsToPrepare; i++)
@@ -16,16 +15,15 @@ namespace Puzzles
                 GameObject newSlot = Instantiate(_slotPrefab, _rectTransform);
                 RectTransform slotRectTransform = newSlot.GetComponent<RectTransform>();
                 slotRectTransform.sizeDelta = size;
-                _slots.Add(slotRectTransform);
             }
             LayoutRebuilder.ForceRebuildLayoutImmediate(_rectTransform);
         }
         public RectTransform GetNewSlotTransform()
         {
-            foreach (var slot in _slots)
+            foreach (Transform child in transform)
             {
-                if (slot.childCount <= 0)
-                    return slot.GetComponent<RectTransform>();
+                if (child.childCount <= 0)
+                    return child.GetComponent<RectTransform>();
             }
 
             return null;

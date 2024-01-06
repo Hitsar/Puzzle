@@ -14,12 +14,13 @@ namespace Puzzles
         [SerializeField] private SketchPiece _sketchPiece;
         private Canvas _canvas;
         private PuzzleVfx _vfx;
+        private GameStateObserver _gameStateObserver;
+        private PuzzleDump _puzzleDump;
         private Vector2 _startPosition;
 
         public Image Image => _image;
         public Sprite Sprite => _image.sprite;
         public RectTransform RectTransform => _rectTransform;
-        public static event EventHandler PiecePlaced;
 
         private const int closeDistanceModifier = 10;
         public void OnEnable()
@@ -47,7 +48,10 @@ namespace Puzzles
             {
                 _rectTransform.position = _sketchPiece.RectTransform.position;
                 _rectTransform.SetParent(_sketchPiece.RectTransform);
-                OnPiecePlaced();
+
+
+                _gameStateObserver.AddPlacedPuzzles();
+                _puzzleDump.ReplenishPuzzle();
             }
             else
             {
@@ -56,16 +60,14 @@ namespace Puzzles
             }
         }
 
-        private void OnPiecePlaced()
-        {
-            PiecePlaced?.Invoke(this, EventArgs.Empty);
-        }
-
         public void SetRayTarget(bool isActive) => _image.raycastTarget = isActive;
         public void SetStartPosition(Vector2 position) => _startPosition = position;
         public void ConnectToSketchPiece(SketchPiece sketchPiece) => _sketchPiece = sketchPiece;
         public void MoveToStart() => _vfx.MoveTo(_startPosition);
         public void SetCanvas(Canvas canvas) => _canvas = canvas;
+        public void SetGameStateObserver(GameStateObserver gameStateObserver) => _gameStateObserver = gameStateObserver;
+        public void SetPuzzleDump(PuzzleDump puzzleDump) => _puzzleDump = puzzleDump;
+        
     }
 }
 
