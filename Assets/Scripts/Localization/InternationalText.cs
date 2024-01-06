@@ -6,6 +6,10 @@ namespace Localization
 {
     public class InternationalText : MonoBehaviour
     {
+        [Header("References")]
+        [SerializeField] private Language _language;
+
+        [Header("Strings")]
         [SerializeField] private string _englishText;
         [SerializeField] private string _russianText;
         [SerializeField] private string _spanishText;
@@ -17,11 +21,11 @@ namespace Localization
         private void Start()
         {
             TryGetComponent(out TextMeshProUGUI textMesh);
-            if (Language.CurrentLanguage == LanguageTags.en) textMesh.text = _englishText;
-            else if (Language.CurrentLanguage == LanguageTags.ru) textMesh.text = _russianText;
-            else if (Language.CurrentLanguage == LanguageTags.es) textMesh.text = _spanishText;
-            else if (Language.CurrentLanguage == LanguageTags.tr) textMesh.text = _turkishText;
-            else if (Language.CurrentLanguage == LanguageTags.de) textMesh.text = _germanText;
+            if (_language.CurrentLanguage == LanguageTags.en) textMesh.text = _englishText;
+            else if (_language.CurrentLanguage == LanguageTags.ru) textMesh.text = _russianText;
+            else if (_language.CurrentLanguage == LanguageTags.es) textMesh.text = _spanishText;
+            else if (_language.CurrentLanguage == LanguageTags.tr) textMesh.text = _turkishText;
+            else if (_language.CurrentLanguage == LanguageTags.de) textMesh.text = _germanText;
             else throw new InvalidOperationException(UNKNOWN_LANGUAGE_ERROR);
         }
     }

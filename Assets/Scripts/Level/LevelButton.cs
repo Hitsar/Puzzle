@@ -6,13 +6,15 @@ namespace Level
 {
     public class LevelButton : MonoBehaviour
     {
-        [SerializeField] private int _level;
+        [SerializeField] protected int _level;
         [SerializeField] private int _moneyForWin;
 
+        private const string _gameplaySceneName = "GameplayScene";
         public virtual void LoadLevel()
         {
             FindAnyObjectByType<Wallet>().SetMoneyForWin(_moneyForWin);
-            SceneManager.LoadScene(_level);
+            LevelNumberPasser.SetLevelNumber(_level);
+            SceneManager.LoadScene(_gameplaySceneName);
         }
     }
 }

@@ -20,7 +20,8 @@ namespace Puzzles
         {
             _transform = GetComponent<RectTransform>();
             _image = GetComponent<Image>();
-            _vfx = new PuzzleVfx(transform);
+            _vfx = new PuzzleVfx();
+            _vfx.SetTransform(_transform);
             
             _canvas = GetComponentInParent<Canvas>();
             _parent = GetComponentInParent<PuzzleSlot>();
@@ -38,7 +39,7 @@ namespace Puzzles
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            _puzzlesBar.CloseOrOpen(true);
+            _puzzlesBar.SetClose(true);
             SetRayTarget(false);
             _parent.ChangeRayTarget(true);
             _parent.transform.SetAsLastSibling();
@@ -47,10 +48,13 @@ namespace Puzzles
         
         public void OnEndDrag(PointerEventData eventData)
         {
-            _puzzlesBar.CloseOrOpen(false);
+            _puzzlesBar.SetClose(false);
             _parent.ChangeRayTarget(false);
 
-            if (_transform.localPosition == Vector3.zero) _puzzlesBar.ReplenishPuzzle(_startPosition);
+            if (_transform.localPosition == Vector3.zero)
+            {
+                _puzzlesBar.ReplenishPuzzle(_startPosition);
+            }
             else
             {
                 MoveToStart();

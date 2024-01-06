@@ -1,3 +1,4 @@
+using Config;
 using UnityEngine;
 
 namespace Saves
@@ -29,10 +30,10 @@ namespace Saves
             PlayerPrefs.DeleteKey(PROGRESS_KEY);
         }
         
-        public static void SaveSettings(SettingsData settings)
+        public static void SaveSettings(SettingsHolder settingsHolder)
         {
-            PlayerPrefs.SetInt(MUSIC_MUTED_KEY, (bool)settings.MusicMuted ? 1 : 0);
-            PlayerPrefs.SetInt(VOICES_MUTED_KEY, (bool)settings.VoicesMuted ? 1 : 0);
+            PlayerPrefs.SetInt(MUSIC_MUTED_KEY, (bool)settingsHolder.IsMusicMuted ? 1 : 0);
+            PlayerPrefs.SetInt(VOICES_MUTED_KEY, (bool)settingsHolder.IsSoundMuted ? 1 : 0);
             PlayerPrefs.Save();
         }
 
@@ -41,8 +42,12 @@ namespace Saves
             var settings = new SettingsData();
             if (PlayerPrefs.HasKey(MUSIC_MUTED_KEY))
                 settings.MusicMuted = PlayerPrefs.GetInt(MUSIC_MUTED_KEY) == 1;
+            else
+                settings.MusicMuted = false;
             if (PlayerPrefs.HasKey(VOICES_MUTED_KEY))
                 settings.VoicesMuted = PlayerPrefs.GetInt(VOICES_MUTED_KEY) == 1;
+            else
+                settings.VoicesMuted = false;
             return settings;
 
         }

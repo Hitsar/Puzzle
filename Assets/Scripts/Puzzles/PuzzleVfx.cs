@@ -5,9 +5,8 @@ namespace Puzzles
 {
     public class PuzzleVfx
     {
-        private readonly Transform _transform;
-
-        public PuzzleVfx(Transform transform) => _transform = transform;
+        private Transform _transform;
+        public void SetTransform(Transform transform) => _transform = transform;
 
         public void MoveTo(Vector2 position)
         {
@@ -15,6 +14,9 @@ namespace Puzzles
             _transform.DOMove(position, 0.5f).SetEase(Ease.OutBack);
         }
 
-        public void Select() => _transform.DOScale(1, 0.3f).SetEase(Ease.OutBack);
+        public void Select()
+        {
+            _transform.DOScale(1, 0.3f).SetEase(Ease.OutBack);
+        }
     }
 }

@@ -22,14 +22,15 @@ namespace Saves
             if (_lastSave.AddSeconds(_saveTimeInterval) >= DateTime.Now) return;
             
             Save();
-            Debug.Log("Game Saved");
+            
             _lastSave = DateTime.Now;
         }
 
-        private void Save()
+        public void Save()
         {
             var saveProfile = MakeSaveAsset();
             LocalStorage.SaveProgress(saveProfile);
+            Debug.Log("Game Saved");
         }
 
         private ProgressAsset MakeSaveAsset()
