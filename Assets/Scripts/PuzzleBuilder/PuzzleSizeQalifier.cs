@@ -1,10 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace PuzzleBuilder
 {
     public class PuzzleSizeQualifier
     {
+        [Inject]
+        public PuzzleSizeQualifier()
+        {
+
+        }
+
         public Vector2 GetMinMaxSize(List<Vector2> puzzleSizes)
         {
             if (puzzleSizes.Count == 0)

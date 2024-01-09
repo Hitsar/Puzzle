@@ -41,10 +41,6 @@ namespace Infrastructure
                 .FromInstance(_puzzleDataSO) 
                 .AsSingle();
 
-            Container.Bind<ConvexSizeCalculator>()
-                .To<ConvexSizeCalculator>()
-                .AsSingle();
-
             Container.Bind<PuzzleResizer>()
                 .FromInstance(_puzzleResizer) 
                 .AsSingle();
