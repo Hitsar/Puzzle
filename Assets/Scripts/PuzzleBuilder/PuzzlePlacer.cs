@@ -1,11 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Zenject;
 
 namespace PuzzleBuilder
 {
     public class PuzzlePlacer
     {
+        [Inject]
+        public PuzzlePlacer()
+        {
+
+        }
+
         private Vector2 _currentPiecePosition = Vector2.zero;
         private const float _aproximator = 1f;
         private Vector2 _currentPieceNumber = new Vector2(1,0);

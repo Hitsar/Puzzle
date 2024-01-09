@@ -15,7 +15,6 @@ namespace Infrastructure
     {
         [Header("Monobehaviours")]
         [SerializeField] private LevelLinksHolder _levelLinksHolder;
-
         [Header("Audio")]
         [SerializeField] private AudioMixer _audioMixer;
 

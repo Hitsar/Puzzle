@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace PuzzleBuilder
 {
@@ -10,13 +9,9 @@ namespace PuzzleBuilder
         {
             Vector2 absoluteSize; //Size in pixels
             if(relativeSize.x < relativeSize .y)
-            {
                 absoluteSize = new Vector2(relativeSize.x / relativeSize.y * maxPuzzleAreaSize.y, maxPuzzleAreaSize.y); 
-            }
             else
-            {
                 absoluteSize = new Vector2(maxPuzzleAreaSize.x, relativeSize.y / relativeSize.x * maxPuzzleAreaSize.x);
-            }
 
             if (absoluteSize.x > maxPuzzleAreaSize.x)
                 absoluteSize = new Vector2(maxPuzzleAreaSize.x, absoluteSize.y * (maxPuzzleAreaSize.x / absoluteSize.x)); 

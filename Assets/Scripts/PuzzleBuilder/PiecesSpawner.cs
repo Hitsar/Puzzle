@@ -10,22 +10,19 @@ namespace PuzzleBuilder
     {
         [SerializeField] private GameObject _sketchPiecePrefab;
         [SerializeField] private GameObject _interactivePiecePrefab;
-        [SerializeField] private LayoutPuzzleBar _puzzleBar;
         private PuzzleResizer _puzzleResizer;
         private PuzzlePlacer _puzzlePlacer;
         private PuzzleSizeQualifier _puzzleSizeQualifier;
-        private ConvexSizeCalculator _convexSizeCalculator;
         private LayoutPuzzleBar _layoutPuzzleBar;
         private Canvas _canvas;
         private PuzzleDump _puzzleDump; 
         private GameStateObserver _gameStateObserver;
         [Inject]
-        public void Construct(PuzzleResizer puzzleResizer, PuzzlePlacer puzzlePlacer, PuzzleSizeQualifier puzzleSizeQualifier, ConvexSizeCalculator convexSizeCalculator, LayoutPuzzleBar layoutPuzzleBar, Canvas canvas, PuzzleDump puzzleDump, GameStateObserver gameStateObserver)
+        public void Construct(PuzzleResizer puzzleResizer, PuzzlePlacer puzzlePlacer, PuzzleSizeQualifier puzzleSizeQualifier, LayoutPuzzleBar layoutPuzzleBar, Canvas canvas, PuzzleDump puzzleDump, GameStateObserver gameStateObserver)
         {
             _puzzleResizer = puzzleResizer;
             _puzzlePlacer = puzzlePlacer;
             _puzzleSizeQualifier = puzzleSizeQualifier;
-            _convexSizeCalculator = convexSizeCalculator;
             _layoutPuzzleBar = layoutPuzzleBar;
             _canvas = canvas;
             _puzzleDump = puzzleDump;
@@ -56,16 +53,21 @@ namespace PuzzleBuilder
             }
 
             Vector2 adaptedMinMax = _puzzleSizeQualifier.GetMinMaxSize(spawnedPieces);
-            float convexSize = _convexSizeCalculator.GetConvexSize(adaptedMinMax.x, adaptedMinMax.y);
+            float convexSize = GetConvexSize(adaptedMinMax.x, adaptedMinMax.y);
 
             foreach (var piece in  spawnedPieces)
             {
                 _puzzlePlacer.PlacePieceOnPosition(piece.RectTransform, adaptedMinMax, convexSize, puzzleAreaSize, dimensionalSize);
             }
 
-            _puzzleBar.PrepareSlots((int)dimensionalSize.x, new Vector2(adaptedMinMax.y, adaptedMinMax.y) / 1.7f);
+            _layoutPuzzleBar.PrepareSlots((int)dimensionalSize.x, new Vector2(adaptedMinMax.y, adaptedMinMax.y) / 1.7f);
 
             _puzzleDump.SetPuzzlePieces(interactivePuzzles, (int)dimensionalSize.x);
+        }
+
+        public float GetConvexSize(float minSize, float maxSize)
+        {
+            return (maxSize - minSize) / 2;
         }
     }
 }

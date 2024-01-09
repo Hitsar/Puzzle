@@ -22,7 +22,7 @@ namespace Puzzles
         public Sprite Sprite => _image.sprite;
         public RectTransform RectTransform => _rectTransform;
 
-        private const int closeDistanceModifier = 10;
+        private const int closeDistanceModifier = 5;
         public void OnEnable()
         {
             SetStartPosition(_rectTransform.position);
