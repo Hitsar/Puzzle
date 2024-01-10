@@ -11,20 +11,22 @@ namespace PuzzleBuilder
 
         private MaxPuzzleArea _maxPuzzleArea;
         private PuzzleArea _puzzleArea;
-        private PuzzleSizeQualifier _puzzleSizeQualifier;
         private PuzzlesDataSO _puzzleDataSO;
         private PiecesSpawner _piecesSpawner;
         private GameStateObserver _gameStateObserver;
+        private SketchPieceFactory _sketchPieceFactory;
+        private InteractivePuzzleFactory _interactivePuzzleFactory;
 
         [Inject]
-        public void Construct(MaxPuzzleArea maxPuzzleArea, PuzzleArea puzzleArea, PuzzleSizeQualifier puzzleSizeQualifier, PuzzlesDataSO puzzlesDataSO, PiecesSpawner piecesSpawner, GameStateObserver gameStateObserver)
+        public void Construct(MaxPuzzleArea maxPuzzleArea, PuzzleArea puzzleArea, PuzzlesDataSO puzzlesDataSO, PiecesSpawner piecesSpawner, GameStateObserver gameStateObserver, SketchPieceFactory sketchPieceFactory, InteractivePuzzleFactory interactivePuzzleFactory)
         {
             _maxPuzzleArea = maxPuzzleArea;
             _puzzleArea = puzzleArea;
-            _puzzleSizeQualifier = puzzleSizeQualifier;
             _puzzleDataSO = puzzlesDataSO;
             _piecesSpawner = piecesSpawner;
             _gameStateObserver = gameStateObserver;
+            _sketchPieceFactory = sketchPieceFactory;
+            _interactivePuzzleFactory = interactivePuzzleFactory;
         }
 
         private void Start()
@@ -39,14 +41,17 @@ namespace PuzzleBuilder
 
         private void LateStart()
         {
+            _sketchPieceFactory.Load();
+            _interactivePuzzleFactory.Load();
             int levelNumber = LevelNumberPasser.Instance != null ? LevelNumberPasser.LevelNumber : _testLevelNumber;
 
             PuzzleData puzzleData = _puzzleDataSO.GetPuzzle(levelNumber);
-            Vector2 puzzleAreaSize = _puzzleArea.Resize(puzzleData.Size, _maxPuzzleArea.GetSize());
-            Vector2 originalImageSize = puzzleData.OriginalImage.rect.size;
+            Vector2 puzzleAreaSize = _puzzleArea.Resize(puzzleData.PuzzleSize, _maxPuzzleArea.GetSize());
+            Vector2 originalImageSize = puzzleData.ImageSize;
 
-            _piecesSpawner.CreatePieces(puzzleData.Sprites, puzzleAreaSize, originalImageSize, puzzleData.Size);
-            _gameStateObserver.Init(puzzleData.Size);
+
+            _piecesSpawner.CreatePieces(puzzleData.Sprites, puzzleAreaSize, originalImageSize, puzzleData.PuzzleSize);
+            _gameStateObserver.Init(puzzleData.PuzzleSize);
         }
     }
 }

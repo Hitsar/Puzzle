@@ -21,15 +21,17 @@ namespace Puzzles
         public Image Image => _image;
         public Sprite Sprite => _image.sprite;
         public RectTransform RectTransform => _rectTransform;
-
         private const int closeDistanceModifier = 5;
-        public void OnEnable()
-        {
-            SetStartPosition(_rectTransform.position);
-            _vfx = new PuzzleVfx();
-            _vfx.SetTransform(_rectTransform);
-        }
 
+        [Inject]
+        public void Construct(Canvas canvas, PuzzleVfx puzzleVfx, GameStateObserver gameStateObserver, PuzzleDump puzzleDump)
+        {
+            _canvas = canvas;
+            _vfx = puzzleVfx;
+            _vfx.SetTransform(_rectTransform);
+            _gameStateObserver = gameStateObserver;
+            _puzzleDump = puzzleDump;
+        }
         public void OnBeginDrag(PointerEventData eventData)
         {
             SetRayTarget(false);
@@ -64,9 +66,6 @@ namespace Puzzles
         public void SetStartPosition(Vector2 position) => _startPosition = position;
         public void ConnectToSketchPiece(SketchPiece sketchPiece) => _sketchPiece = sketchPiece;
         public void MoveToStart() => _vfx.MoveTo(_startPosition);
-        public void SetCanvas(Canvas canvas) => _canvas = canvas;
-        public void SetGameStateObserver(GameStateObserver gameStateObserver) => _gameStateObserver = gameStateObserver;
-        public void SetPuzzleDump(PuzzleDump puzzleDump) => _puzzleDump = puzzleDump;
         
     }
 }

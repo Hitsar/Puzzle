@@ -7,7 +7,7 @@ namespace PuzzleBuilder
         [SerializeField] private RectTransform _rectTransform;
         public Vector2 Resize(Vector2 relativeSize, Vector2 maxPuzzleAreaSize)
         {
-            Vector2 absoluteSize; //Size in pixels
+            Vector2 absoluteSize; //PuzzleSize in pixels
             if(relativeSize.x < relativeSize .y)
                 absoluteSize = new Vector2(relativeSize.x / relativeSize.y * maxPuzzleAreaSize.y, maxPuzzleAreaSize.y); 
             else

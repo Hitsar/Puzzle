@@ -80,6 +80,14 @@ namespace Infrastructure
             Container.Bind<PuzzleDump>()
                 .FromInstance(_puzzleDump)
                 .AsSingle();
+
+            Container.Bind<SketchPieceFactory>()
+                .To<SketchPieceFactory>()
+                .AsSingle();
+
+            Container.Bind<InteractivePuzzleFactory>()
+                .To<InteractivePuzzleFactory>()
+                .AsSingle();
         }
     }
 }
