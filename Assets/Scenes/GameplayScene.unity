@@ -817,7 +817,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 1288580370}
-  _puzzleBar: {fileID: 935164536}
 --- !u!1 &1297485944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzleDataSO: {fileID: 11400000, guid: ce19b7b84e75cc74dad3616442aa46c9, type: 2}
+  _gameConfigSO: {fileID: 11400000, guid: b6baccd4c1f41c04184a3008a5e93e0d, type: 2}
   _maxPuzzleArea: {fileID: 1627778665}
   _puzzleArea: {fileID: 620899011}
   _peicesSpawner: {fileID: 620899013}

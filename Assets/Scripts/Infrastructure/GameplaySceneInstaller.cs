@@ -3,6 +3,7 @@ using UnityEngine;
 using PuzzleBuilder;
 using Puzzles;
 using Audio;
+using ConfigFeature;
 
 namespace Infrastructure
 {
@@ -10,6 +11,7 @@ namespace Infrastructure
     {
         [Header("ScriptableObjects")]
         [SerializeField] private PuzzlesDataSO _puzzleDataSO;
+        [SerializeField] private GameConfigSO _gameConfigSO;
 
         [Header("Monobehaviours")]
         [SerializeField] private MaxPuzzleArea _maxPuzzleArea;
@@ -56,8 +58,8 @@ namespace Infrastructure
                 .FromInstance(_canvas)
                 .AsSingle();
 
-            Container.Bind<PuzzleVfx>()
-                .To<PuzzleVfx>()
+            Container.Bind<IPuzzleVFX>()
+                .To<PuzzleVFX>()
                 .AsTransient();
 
             Container.Bind<LayoutPuzzleBar>()
@@ -86,6 +88,10 @@ namespace Infrastructure
 
             Container.Bind<InteractivePuzzleFactory>()
                 .To<InteractivePuzzleFactory>()
+                .AsSingle();
+
+            Container.Bind<GameConfigSO>()
+                .FromInstance(_gameConfigSO)
                 .AsSingle();
         }
     }

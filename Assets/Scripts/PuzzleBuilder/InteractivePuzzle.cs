@@ -13,7 +13,7 @@ namespace Puzzles
         [SerializeField] private Image _image;
         [SerializeField] private SketchPiece _sketchPiece;
         private Canvas _canvas;
-        private PuzzleVfx _vfx;
+        private IPuzzleVFX _vfx;
         private GameStateObserver _gameStateObserver;
         private PuzzleDump _puzzleDump;
         private Vector2 _startPosition;
@@ -24,7 +24,7 @@ namespace Puzzles
         private const int closeDistanceModifier = 5;
 
         [Inject]
-        public void Construct(Canvas canvas, PuzzleVfx puzzleVfx, GameStateObserver gameStateObserver, PuzzleDump puzzleDump)
+        public void Construct(Canvas canvas, IPuzzleVFX puzzleVfx, GameStateObserver gameStateObserver, PuzzleDump puzzleDump)
         {
             _canvas = canvas;
             _vfx = puzzleVfx;

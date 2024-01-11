@@ -45,27 +45,36 @@ namespace PuzzleBuilder
 
         private void LateStart()
         {
-            
-
-            _sketchPieceFactory.Load();
-            _interactivePuzzleFactory.Load();
-            int levelNumber = LevelNumberPasser.Instance != null ? LevelNumberPasser.LevelNumber : _testLevelNumber;
-
-            PuzzleData puzzleData = _puzzleDataSO.GetPuzzle(levelNumber);
+            LoadFactories();
+            PuzzleData puzzleData = GetPuzzleData();
             Vector2 puzzleAreaSize = _puzzleArea.Resize(puzzleData.PuzzleSize, _maxPuzzleArea.GetSize());
-            Vector2 originalImageSize = puzzleData.ImageSize;
-            SpriteAtlas spriteAtlas = puzzleData.Atlas;
-            Sprite[] sprites = new Sprite[(int)(puzzleData.PuzzleSize.x * puzzleData.PuzzleSize.y)];
-            spriteAtlas.GetSprites(sprites);
-            List<Sprite> spriteList = SortSprites(sprites);
-
-            _piecesSpawner.CreatePieces(spriteList, puzzleAreaSize, originalImageSize, puzzleData.PuzzleSize);
+            List<Sprite> spriteList = GetSpriteList(puzzleData);
+            _piecesSpawner.CreatePieces(spriteList, puzzleAreaSize, puzzleData.ImageSize, puzzleData.PuzzleSize);
             _gameStateObserver.Init(puzzleData.PuzzleSize);
         }
 
-        public List<Sprite> SortSprites(Sprite[] sprites)
+        private void LoadFactories()
         {
-            //Array.Sort(sprites, delegate (Sprite x, Sprite y) { return x.name.CompareTo(y.name); });
+            _sketchPieceFactory.Load();
+            _interactivePuzzleFactory.Load();
+        }
+
+        private PuzzleData GetPuzzleData()
+        {
+            int levelNumber = LevelNumberPasser.Instance != null ? LevelNumberPasser.LevelNumber : _testLevelNumber;
+            return _puzzleDataSO.GetPuzzle(levelNumber);
+        }
+
+        private List<Sprite> GetSpriteList(PuzzleData puzzleData)
+        {
+            SpriteAtlas spriteAtlas = puzzleData.Atlas;
+            Sprite[] sprites = new Sprite[(int)(puzzleData.PuzzleSize.x * puzzleData.PuzzleSize.y)];
+            spriteAtlas.GetSprites(sprites);
+            return SortSprites(sprites);
+        }
+
+        private List<Sprite> SortSprites(Sprite[] sprites)
+        {
             Dictionary<string, Sprite> keyValuePairs = new Dictionary<string, Sprite>();
 
             for (int i = 0; i < sprites.Length; i++)
