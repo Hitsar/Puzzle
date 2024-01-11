@@ -10,10 +10,10 @@ namespace PuzzleBuilder
         [Header("Width x Height")]
         [SerializeField] private Vector2 _size;
         [SerializeField] private Sprite _originalImage;
-        [SerializeField] private List<Sprite> _sprites = new List<Sprite>();
+        [SerializeField] private SpriteAtlas _atlas;
         public Vector2 PuzzleSize => _size;
         public Sprite OriginalImage => _originalImage;
-        public List<Sprite> Sprites => _sprites;
-        public Vector2 ImageSize => OriginalImage.rect.size; 
+        public Vector2 ImageSize => OriginalImage.rect.size;
+        public SpriteAtlas Atlas => _atlas;
     }
 }

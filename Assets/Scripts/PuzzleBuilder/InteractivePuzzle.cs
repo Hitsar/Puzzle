@@ -62,7 +62,7 @@ namespace Puzzles
             }
         }
 
-        public void SetRayTarget(bool isActive) => _image.raycastTarget = isActive;
+        private void SetRayTarget(bool isActive) => _image.raycastTarget = isActive;
         public void SetStartPosition(Vector2 position) => _startPosition = position;
         public void ConnectToSketchPiece(SketchPiece sketchPiece) => _sketchPiece = sketchPiece;
         public void MoveToStart() => _vfx.MoveTo(_startPosition);
