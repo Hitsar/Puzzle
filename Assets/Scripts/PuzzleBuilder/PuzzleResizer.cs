@@ -1,10 +1,9 @@
 using Puzzles;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace PuzzleBuilder
 {
-    public class PuzzleResizer : MonoBehaviour
+    public class PuzzleResizer
     {
         public void ResizePuzzlePiece(IPuzzlePiece sketchPiece, Vector2 puzzleAreaSize, Vector2 originalImageSize)
         {

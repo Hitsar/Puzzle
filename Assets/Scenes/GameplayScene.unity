@@ -363,7 +363,6 @@ GameObject:
   - component: {fileID: 620899010}
   - component: {fileID: 620899009}
   - component: {fileID: 620899011}
-  - component: {fileID: 620899012}
   - component: {fileID: 620899013}
   m_Layer: 5
   m_Name: PuzzleArea
@@ -443,18 +442,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 620899008}
---- !u!114 &620899012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620899007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db780b7bc3357bc49ab872ddcba29211, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &620899013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1053,7 +1040,6 @@ MonoBehaviour:
   _puzzleDataSO: {fileID: 11400000, guid: ce19b7b84e75cc74dad3616442aa46c9, type: 2}
   _maxPuzzleArea: {fileID: 1627778665}
   _puzzleArea: {fileID: 620899011}
-  _puzzleResizer: {fileID: 620899012}
   _peicesSpawner: {fileID: 620899013}
   _winAudio: {fileID: 1297485947}
   _audioInPlace: {fileID: 621727083}

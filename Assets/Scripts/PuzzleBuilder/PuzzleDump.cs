@@ -8,9 +8,15 @@ namespace PuzzleBuilder
     public class PuzzleDump : MonoBehaviour
     {
         [SerializeField] private RectTransform _rectTransform;
-        [SerializeField] private LayoutPuzzleBar _puzzleBar;
+        private LayoutPuzzleBar _puzzleBar;
         private List<InteractivePuzzle> _puzzlePieces = new List<InteractivePuzzle>();
         public RectTransform RectTransform => _rectTransform;
+
+        [Inject]
+        public void Construct(LayoutPuzzleBar layoutPuzzleBar)
+        {
+            _puzzleBar = layoutPuzzleBar;
+        }
 
         public void ReplenishPuzzle()
         {
@@ -18,7 +24,7 @@ namespace PuzzleBuilder
                 return;
 
             InteractivePuzzle puzzleToReplenish = _puzzlePieces[Random.Range(0, _puzzlePieces.Count)];
-            RectTransform newSlot = FindObjectOfType<LayoutPuzzleBar>().GetNewSlotTransform();
+            RectTransform newSlot = _puzzleBar.GetNewSlotTransform();
             puzzleToReplenish.SetStartPosition(newSlot.position);
             puzzleToReplenish.MoveToStart();
             _puzzlePieces.Remove(puzzleToReplenish);

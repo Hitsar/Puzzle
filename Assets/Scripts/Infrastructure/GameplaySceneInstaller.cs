@@ -14,7 +14,6 @@ namespace Infrastructure
         [Header("Monobehaviours")]
         [SerializeField] private MaxPuzzleArea _maxPuzzleArea;
         [SerializeField] private PuzzleArea _puzzleArea;
-        [SerializeField] private PuzzleResizer _puzzleResizer;
         [SerializeField] private PiecesSpawner _peicesSpawner;
         [SerializeField] private WinAudio _winAudio;
         [SerializeField] private AudioInPlace _audioInPlace;
@@ -42,7 +41,7 @@ namespace Infrastructure
                 .AsSingle();
 
             Container.Bind<PuzzleResizer>()
-                .FromInstance(_puzzleResizer) 
+                .To<PuzzleResizer>()
                 .AsSingle();
 
             Container.Bind<PiecesSpawner>()
