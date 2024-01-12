@@ -1,12 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI; // Для работы с UI
-using TMPro; // Только если используете TextMeshPro
+//using UnityEngine.UI; // Для работы с UI
+//using TMPro; // Только если используете TextMeshPro
 using YG;
 using Shop;
 
 namespace AdsManagement
 {
-    public class RewardedAdsManager : MonoBehaviour
+    /*public class RewardedAdsManager : MonoBehaviour
     {
         [SerializeField] private Wallet wallet;
 
@@ -22,5 +22,5 @@ namespace AdsManagement
             Debug.Log("Добавляем монеты");
             wallet.AddMoneyForWin();
         }
-    }
+    }*/
 }
