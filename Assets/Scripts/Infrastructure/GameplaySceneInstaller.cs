@@ -93,6 +93,10 @@ namespace Infrastructure
             Container.Bind<GameConfigSO>()
                 .FromInstance(_gameConfigSO)
                 .AsSingle();
+
+            Container.Bind<SpriteSorter>()
+                .To<SpriteSorter>()
+                .AsSingle();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace PuzzleBuilder
 
         public InteractivePuzzle Create(Sprite newSprite, SketchPiece sketchPiece)
         {
-            InteractivePuzzle newInteractivePuzzle = _diContainer.InstantiatePrefab(_interactivePuzzlePrefab, _puzzleDump.transform).GetComponent<InteractivePuzzle>();
+            InteractivePuzzle newInteractivePuzzle = _diContainer.InstantiatePrefabForComponent<InteractivePuzzle>(_interactivePuzzlePrefab, _puzzleDump.transform);
             newInteractivePuzzle.Image.sprite = newSprite;
             newInteractivePuzzle.ConnectToSketchPiece(sketchPiece);
             return newInteractivePuzzle;

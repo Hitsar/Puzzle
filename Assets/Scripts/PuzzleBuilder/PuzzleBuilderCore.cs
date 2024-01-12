@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
-using UnityEngine.UIElements;
 using Zenject;
-using System.Linq;
 
 namespace PuzzleBuilder
 {
@@ -20,9 +18,10 @@ namespace PuzzleBuilder
         private GameStateObserver _gameStateObserver;
         private SketchPieceFactory _sketchPieceFactory;
         private InteractivePuzzleFactory _interactivePuzzleFactory;
+        private SpriteSorter _spriteSorter;
 
         [Inject]
-        public void Construct(MaxPuzzleArea maxPuzzleArea, PuzzleArea puzzleArea, PuzzlesDataSO puzzlesDataSO, PiecesSpawner piecesSpawner, GameStateObserver gameStateObserver, SketchPieceFactory sketchPieceFactory, InteractivePuzzleFactory interactivePuzzleFactory)
+        public void Construct(MaxPuzzleArea maxPuzzleArea, PuzzleArea puzzleArea, PuzzlesDataSO puzzlesDataSO, PiecesSpawner piecesSpawner, GameStateObserver gameStateObserver, SketchPieceFactory sketchPieceFactory, InteractivePuzzleFactory interactivePuzzleFactory, SpriteSorter spriteSorter)
         {
             _maxPuzzleArea = maxPuzzleArea;
             _puzzleArea = puzzleArea;
@@ -31,6 +30,7 @@ namespace PuzzleBuilder
             _gameStateObserver = gameStateObserver;
             _sketchPieceFactory = sketchPieceFactory;
             _interactivePuzzleFactory = interactivePuzzleFactory;
+            _spriteSorter = spriteSorter;
         }
 
         private void Start()
@@ -70,29 +70,7 @@ namespace PuzzleBuilder
             SpriteAtlas spriteAtlas = puzzleData.Atlas;
             Sprite[] sprites = new Sprite[(int)(puzzleData.PuzzleSize.x * puzzleData.PuzzleSize.y)];
             spriteAtlas.GetSprites(sprites);
-            return SortSprites(sprites);
-        }
-
-        private List<Sprite> SortSprites(Sprite[] sprites)
-        {
-            Dictionary<string, Sprite> keyValuePairs = new Dictionary<string, Sprite>();
-
-            for (int i = 0; i < sprites.Length; i++)
-            {
-                string number = "";
-                foreach (char c in sprites[i].name)
-                {
-                    if (char.IsNumber(c))
-                        number += c;
-                }
-                
-                keyValuePairs.Add(number, sprites[i]);
-            }
-
-            keyValuePairs = keyValuePairs.OrderBy(obj => int.Parse(obj.Key)).ToDictionary(obj => obj.Key, obj => obj.Value);
-            List<Sprite> result = keyValuePairs.Values.ToList();
-
-            return result;
+            return  _spriteSorter.SortSprites(sprites);
         }
     }
 }

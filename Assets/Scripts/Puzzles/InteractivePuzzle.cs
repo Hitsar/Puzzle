@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 using Zenject;
 using UnityEngine.UI;
 using PuzzleBuilder;
-using System;
 
 namespace Puzzles
 {
@@ -50,7 +49,6 @@ namespace Puzzles
             {
                 _rectTransform.position = _sketchPiece.RectTransform.position;
                 _rectTransform.SetParent(_sketchPiece.RectTransform);
-
 
                 _gameStateObserver.AddPlacedPuzzles();
                 _puzzleDump.ReplenishPuzzle();
