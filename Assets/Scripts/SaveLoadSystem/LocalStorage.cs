@@ -17,20 +17,20 @@ namespace SaveLoadSystem
 
         }
 
-        public static void SaveProgress(ProgressAsset progress)
+        public void SaveProgress(ProgressAsset progress)
         {
             var progressJson = JsonUtility.ToJson(progress);
             PlayerPrefs.SetString(PROGRESS_KEY, progressJson);
             PlayerPrefs.Save();
         }
 
-        public static void SaveMoney(int money)
+        public void SaveMoney(int money)
         {
             PlayerPrefs.SetInt(MONEY_KEY, money);
             PlayerPrefs.Save();
         }
         
-        public static ProgressAsset GetProgress()
+        public ProgressAsset GetProgress()
         {
             var progressJson = PlayerPrefs.GetString(PROGRESS_KEY);
             if (progressJson == null)
@@ -39,25 +39,25 @@ namespace SaveLoadSystem
             return progress;
         }
 
-        public static int GetMoneyValue()
+        public int GetMoneyValue()
         {
             return PlayerPrefs.GetInt(MONEY_KEY);
         }
 
-        public static void DeleteProgress()
+        public void DeleteProgress()
         {
             PlayerPrefs.DeleteKey(PROGRESS_KEY);
             PlayerPrefs.DeleteKey(MONEY_KEY);
         }
         
-        public static void SaveSettings(SettingsHolder settingsHolder)
+        public void SaveSettings(SettingsHolder settingsHolder)
         {
             PlayerPrefs.SetInt(MUSIC_MUTED_KEY, (bool)settingsHolder.IsMusicMuted ? 1 : 0);
             PlayerPrefs.SetInt(VOICES_MUTED_KEY, (bool)settingsHolder.IsSoundMuted ? 1 : 0);
             PlayerPrefs.Save();
         }
 
-        public static SettingsData LoadSettings()
+        public SettingsData LoadSettings()
         {
             var settings = new SettingsData();
             if (PlayerPrefs.HasKey(MUSIC_MUTED_KEY))

@@ -24,9 +24,9 @@ public class AppInstaller : MonoInstaller<AppInstaller>
             .To<MoneySaver>()
             .AsSingle();
 
-        //Container.Bind<LocalStorage>()
-        //    .To<LocalStorage>()
-        //    .AsSingle();
+        Container.Bind<LocalStorage>()
+            .To<LocalStorage>()
+            .AsSingle();
     }
 
 }

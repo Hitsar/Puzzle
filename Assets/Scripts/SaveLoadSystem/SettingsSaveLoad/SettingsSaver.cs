@@ -8,11 +8,13 @@ namespace SaveLoadSystem.SettingsSaveLoad
     public class SettingsSaver : MonoBehaviour
     {
         private SettingsHolder _settingsHolder;
+        private LocalStorage _localStorage;
         private DateTime _lastSave;
         [Inject]
-        public void Construct(SettingsHolder settingsHolder)
+        public void Construct(SettingsHolder settingsHolder, LocalStorage localStorage)
         {
             _settingsHolder = settingsHolder;
+            _localStorage = localStorage;
         }
         private void Start()
         {
@@ -21,7 +23,7 @@ namespace SaveLoadSystem.SettingsSaveLoad
 
         public void SaveSettings()
         {
-            LocalStorage.SaveSettings(_settingsHolder);
+            _localStorage.SaveSettings(_settingsHolder);
             Debug.Log("Settings Saved");
         }
 

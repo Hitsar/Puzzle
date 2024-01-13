@@ -6,17 +6,18 @@ using Zenject;
 public class LevelSaver
 {
     private PurchasedLevelsLoader _purchasedLevelsLoader;
-
+    private LocalStorage _localStorage;
     [Inject]
-    public LevelSaver(PurchasedLevelsLoader purchasedLevelsLoader)
+    public LevelSaver(PurchasedLevelsLoader purchasedLevelsLoader, LocalStorage localStorage)
     {
         _purchasedLevelsLoader = purchasedLevelsLoader;
+        _localStorage = localStorage;
     }
 
     public void Save()
     {
         var saveProfile = MakeSaveAsset();
-        LocalStorage.SaveProgress(saveProfile);
+        _localStorage.SaveProgress(saveProfile);
         Debug.Log("Game Saved");
     }
 
