@@ -1,7 +1,6 @@
 using Config;
 using SaveLoadSystem;
-using SaveLoadSystem.SettingsSaveLoad;
-using TagComponents.Audio;
+using Audio;
 using UnityEngine;
 
 public class ConsistentComponentsHolder : MonoBehaviour

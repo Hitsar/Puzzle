@@ -1,9 +1,6 @@
-﻿using Audio;
-using Config;
-using UnityEngine;
-using Zenject;
+﻿using UnityEngine;
 
-namespace TagComponents.Audio
+namespace Audio
 {
     public class MusicAudioSource : MonoBehaviour, IAudioSourceTag
     {

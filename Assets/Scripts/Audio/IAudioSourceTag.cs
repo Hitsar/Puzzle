@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TagComponents.Audio
+namespace Audio
 {
     public interface IAudioSourceTag
     {

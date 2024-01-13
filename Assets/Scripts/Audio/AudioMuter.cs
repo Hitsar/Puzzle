@@ -1,4 +1,4 @@
-using TagComponents.Audio;
+using Audio;
 using UnityEngine;
 using UnityEngine.Audio;
 using Zenject;
