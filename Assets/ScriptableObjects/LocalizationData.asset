@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b32aa55b72421f45ac73b2cc67f18ee, type: 3}
+  m_Name: LocalizationData
+  m_EditorClassIdentifier: 
+  _localizationData:
+  - _language: 0
+    _winSprite: {fileID: -1201906480, guid: b15b647c424e12f43a533645e8549b55, type: 3}
+    _winText: Continue
+  - _language: 1
+    _winSprite: {fileID: 60993995, guid: 2ca53060a4facd34baa37b55fc3c1d24, type: 3}
+    _winText: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
+  - _language: 2
+    _winSprite: {fileID: 20355344, guid: b15b647c424e12f43a533645e8549b55, type: 3}
+    _winText: Continuar
+  - _language: 3
+    _winSprite: {fileID: 148403237, guid: b15b647c424e12f43a533645e8549b55, type: 3}
+    _winText: Devam etmek
+  - _language: 4
+    _winSprite: {fileID: -575749737, guid: b15b647c424e12f43a533645e8549b55, type: 3}
+    _winText: Fortfahren

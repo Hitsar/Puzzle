@@ -1,4 +1,5 @@
-﻿using PuzzleBuilder;
+﻿using Localization;
+using PuzzleBuilder;
 using SaveLoadSystem;
 using Shop;
 using UnityEngine;
@@ -11,17 +12,20 @@ namespace Infrastructure
         private PuzzleBuilderCore _puzzleBuilderCore;
         private MoneyLoader _moneyLoader;
         private Wallet _wallet;
+        private Language _language;
 
         [Inject]
-        public void Construct(PuzzleBuilderCore puzzleBuilderCore, MoneyLoader progressLoader, Wallet wallet)
+        public void Construct(PuzzleBuilderCore puzzleBuilderCore, MoneyLoader progressLoader, Wallet wallet, Language language)
         {
             _puzzleBuilderCore = puzzleBuilderCore;
             _moneyLoader = progressLoader;
             _wallet = wallet;
+            _language = language;
         }
 
-        private void Start () 
+        private void Awake() 
         {
+            _language.Init();
             _moneyLoader.LoadWallet();
             LoadReward();
             _puzzleBuilderCore.BuildPuzzle();

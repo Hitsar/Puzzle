@@ -1,5 +1,4 @@
 using SaveLoadSystem;
-using Shop;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -9,7 +8,6 @@ namespace Level
     public class LevelButton : MonoBehaviour
     {
         [SerializeField] protected int _level;
-        [SerializeField] private int _moneyForWin;
         private LevelSaver _levelSaver;
         private MoneySaver _moneySaver;
         private const string _gameplaySceneName = "GameplayScene";

@@ -75,3 +75,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moneyDataSO: {fileID: 11400000, guid: 9da98e0186a124d44ba49e7b01ee2213, type: 2}
+  _localizationDataSO: {fileID: 11400000, guid: 59baba0523faf8e4ca8e2765a8361fdf, type: 2}

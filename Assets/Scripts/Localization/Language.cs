@@ -4,12 +4,12 @@ using YG;
 
 namespace Localization
 {
-    public class Language : MonoBehaviour
+    public class Language
     {
         private LanguageTags _currentLanguage;
         public LanguageTags CurrentLanguage => _currentLanguage;
 
-        private void Awake()
+        public void Init()
         {
             _currentLanguage = (LanguageTags)Enum.Parse(typeof(LanguageTags), YandexGame.EnvironmentData.language, true);
         }
