@@ -254,33 +254,33 @@ namespace YG
             else if (cloudDataState == DataState.Broken ||
                 (cloudDataState == DataState.Broken && localDataState == DataState.Broken))
             {
-                Message("Local Saves - " + localDataState);
-                Message("Cloud Saves - Broken! Data Recovering...");
+                Message("Local SaveLoadSystem - " + localDataState);
+                Message("Cloud SaveLoadSystem - Broken! Data Recovering...");
                 ResetSaveProgress();
 #if YG_NEWTONSOFT_FOR_SAVES
                 savesData = JsonConvert.DeserializeObject<SavesYG>(data);
 #else
                 savesData = JsonUtility.FromJson<SavesYG>(data);
 #endif
-                Message("Cloud Saves Partially Restored!");
+                Message("Cloud SaveLoadSystem Partially Restored!");
                 AfterLoading();
             }
             else if (localDataState == DataState.Broken)
             {
-                Message("Cloud Saves - " + cloudDataState);
-                Message("Local Saves - Broken! Data Recovering...");
+                Message("Cloud SaveLoadSystem - " + cloudDataState);
+                Message("Local SaveLoadSystem - Broken! Data Recovering...");
                 ResetSaveProgress();
 #if YG_NEWTONSOFT_FOR_SAVES
                 savesData = JsonConvert.DeserializeObject<SavesYG>(LoadFromLocalStorage("savesData"));
 #else
                 savesData = JsonUtility.FromJson<SavesYG>(LoadFromLocalStorage("savesData"));
 #endif
-                Message("Local Saves Partially Restored!");
+                Message("Local SaveLoadSystem Partially Restored!");
                 AfterLoading();
             }
             else
             {
-                Message("No Saves");
+                Message("No SaveLoadSystem");
                 ResetSaveProgress();
             }
         }

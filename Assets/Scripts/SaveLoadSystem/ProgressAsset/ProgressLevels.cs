@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Level;
 
-namespace Saves
+namespace SaveLoadSystem
 {
     [Serializable]
     public class ProgressLevels

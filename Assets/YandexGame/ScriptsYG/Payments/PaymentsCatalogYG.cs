@@ -16,7 +16,7 @@ namespace YG
         [SerializeField, ConditionallyVisible(nameof(spawnPurchases)), Tooltip("Префаб покупки (объект со компонентом PurchaseYG)")]
         private GameObject purchasePrefab;
         public enum UpdateListMethod { OnEnable, Start, DoNotUpdate };
-        [Tooltip("Когда следует обновлять список покупок?\nStart - Обновлять в методе Start.\nOnEnable - Обновлять при каждой активации объекта (в методе OnEnable)\nDoNotUpdate - Не обновлять.")]
+        [Tooltip("Когда следует обновлять список покупок?\nStart - Обновлять в методе BuildPuzzle.\nOnEnable - Обновлять при каждой активации объекта (в методе OnEnable)\nDoNotUpdate - Не обновлять.")]
         public UpdateListMethod updateListMethod;
 
         [SerializeField, Tooltip("Список покупок (PurchaseYG)")]

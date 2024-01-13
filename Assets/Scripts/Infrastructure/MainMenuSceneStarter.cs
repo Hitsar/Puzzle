@@ -1,21 +1,23 @@
-using Saves;
+using SaveLoadSystem;
 using UnityEngine;
 using Zenject;
 
 public class MainMenuSceneStarter : MonoBehaviour
 {
-    private ProgressLoader _progressLoader;
+    private LevelLoader _levelLoader;
+    private MoneyLoader _moneyLoader;
     private LevelLinksHolder _levelLinksHolder;
     [Inject]
-    public void Construct(ProgressLoader progressLoader, LevelLinksHolder levelLinksHolder)
+    public void Construct(LevelLoader levelLoader, LevelLinksHolder levelLinksHolder, MoneyLoader moneyLoader)
     {
-        _progressLoader = progressLoader;
+        _levelLoader = levelLoader;
         _levelLinksHolder = levelLinksHolder;
+        _moneyLoader = moneyLoader;
     }
     private void Start()
     {
-        Debug.Log("Scene started");
         _levelLinksHolder.Init();
-        _progressLoader.Load();
+        _moneyLoader.LoadWallet();
+        _levelLoader.Load();
     }
 }

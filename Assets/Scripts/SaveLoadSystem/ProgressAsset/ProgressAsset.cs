@@ -1,4 +1,4 @@
-namespace Saves
+namespace SaveLoadSystem
 {
     public class ProgressAsset
     {

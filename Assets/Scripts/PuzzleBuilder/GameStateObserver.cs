@@ -14,11 +14,15 @@ namespace PuzzleBuilder
         private int _placedPieces = 0;
         private AudioSource _winAudio;
         private AudioSource _inPlaceAudio;
+        private LevelRewardDisplay _levelRewardDisplay;
+        private Wallet _wallet;
         [Inject]
-        public GameStateObserver(WinAudio winAudio, AudioInPlace audioInPlace) 
+        public GameStateObserver(WinAudio winAudio, AudioInPlace audioInPlace, LevelRewardDisplay levelRewardDisplay, Wallet wallet) 
         {
             _winAudio = winAudio.AudioSource;
             _inPlaceAudio = audioInPlace.AudioSource;
+            _levelRewardDisplay = levelRewardDisplay;
+            _wallet = wallet;
         }
 
         public void Init(Vector2 puzzleSize)
@@ -39,8 +43,10 @@ namespace PuzzleBuilder
 
         private void FinishLevel()
         {
+            _levelRewardDisplay.UpdateLevelRewardText(_wallet.LevelReward);
+            _wallet.AddMoneyForWin();
             MonoBehaviour.FindAnyObjectByType<WinPanelAnimator>(FindObjectsInactive.Include).gameObject.SetActive(true);
-            MonoBehaviour.FindAnyObjectByType<Wallet>().AddMoneyForWin();
+            
 
             _winAudio.Play();
         }

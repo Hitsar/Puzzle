@@ -1,18 +1,32 @@
 using Config;
 using UnityEngine;
+using Zenject;
 
-namespace Saves
+namespace SaveLoadSystem
 {
     public class LocalStorage
     {
         private const string MUSIC_MUTED_KEY = "MusicMuted";
         private const string VOICES_MUTED_KEY = "VoicesMuted";
         private const string PROGRESS_KEY = "Progress";
+        private const string MONEY_KEY = "Money";
+
+        [Inject]
+        public LocalStorage()
+        {
+
+        }
 
         public static void SaveProgress(ProgressAsset progress)
         {
             var progressJson = JsonUtility.ToJson(progress);
             PlayerPrefs.SetString(PROGRESS_KEY, progressJson);
+            PlayerPrefs.Save();
+        }
+
+        public static void SaveMoney(int money)
+        {
+            PlayerPrefs.SetInt(MONEY_KEY, money);
             PlayerPrefs.Save();
         }
         
@@ -25,9 +39,15 @@ namespace Saves
             return progress;
         }
 
+        public static int GetMoneyValue()
+        {
+            return PlayerPrefs.GetInt(MONEY_KEY);
+        }
+
         public static void DeleteProgress()
         {
             PlayerPrefs.DeleteKey(PROGRESS_KEY);
+            PlayerPrefs.DeleteKey(MONEY_KEY);
         }
         
         public static void SaveSettings(SettingsHolder settingsHolder)

@@ -3,7 +3,7 @@ using UI;
 using Zenject;
 using Config;
 
-namespace Saves.SettingsSaveLoad
+namespace SaveLoadSystem
 {
     public class SettingsLoader : MonoBehaviour
     {

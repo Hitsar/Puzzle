@@ -36,6 +36,7 @@ namespace YG
 
             if (languageIndex >= 0 && languageIndex < languageSprites.Length)
             {
+                Debug.Log("OOOOOOOOOOOOOOOOO");
                 imageComponent.sprite = languageSprites[languageIndex];
             }
             else

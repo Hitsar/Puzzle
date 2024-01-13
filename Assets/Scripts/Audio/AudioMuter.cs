@@ -1,4 +1,3 @@
-using Assets.Scripts.TagComponents.Audio;
 using TagComponents.Audio;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -10,14 +9,12 @@ namespace Audio
     {
         private AudioMixer _audioMixer;
         private MusicAudioSource _musicAudioSource;
-        private SoundAudioSource _soundAudioSource;
 
         [Inject]
-        public AudioMuter(AudioMixer audioMixer, MusicAudioSource musicAudioSource, SoundAudioSource soundAudioSource)
+        public AudioMuter(AudioMixer audioMixer, MusicAudioSource musicAudioSource)
         {
             _audioMixer = audioMixer;
             _musicAudioSource = musicAudioSource;
-            _soundAudioSource = soundAudioSource;
         }
 
         public void SetMusicVolume(bool muted)
@@ -27,8 +24,6 @@ namespace Audio
         public void SetSoundVolume(bool muted)
         {
             _audioMixer.SetFloat("Sound", muted ? -80 : 0);
-            if (!muted)
-                _soundAudioSource.Init();
         }
     }
 }

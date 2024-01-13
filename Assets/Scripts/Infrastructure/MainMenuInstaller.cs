@@ -2,19 +2,19 @@ using UnityEngine;
 using Zenject;
 using UnityEngine.Audio;
 using TagComponents.Audio;
-using Assets.Scripts.TagComponents.Audio;
 using Audio;
 using UI;
 using Config;
-using Saves.SettingsSaveLoad;
-using Saves;
+using SaveLoadSystem;
+using Shop;
 
 namespace Infrastructure
 {
-    public class GameInstaller : MonoInstaller
+    public class MainMenuInstaller : MonoInstaller
     {
         [Header("Monobehaviours")]
         [SerializeField] private LevelLinksHolder _levelLinksHolder;
+        [SerializeField] private PurchasedLevelsLoader _puchasedLevelsLoader;
         [Header("Audio")]
         [SerializeField] private AudioMixer _audioMixer;
 
@@ -26,6 +26,7 @@ namespace Infrastructure
         [SerializeField] private MusicToggle _musicToggle;
         [SerializeField] private SoundToggle _soundToggle;
         [SerializeField] private SettingsPanelAnimator _settingsPanelAnimator;
+        [SerializeField] private MoneyDisplay _moneyDisplay;
         public override void InstallBindings()
         {
             ConsistentComponentsHolder holder = GameObject.Find("Holder").GetComponent<ConsistentComponentsHolder>();
@@ -34,24 +35,12 @@ namespace Infrastructure
                 .FromInstance(holder.MusicAudioSource)
                 .AsSingle();
 
-            Container.Bind<SoundAudioSource>()
-                .FromInstance(holder.SoundAudioSource)
-                .AsSingle();
-
             Container.Bind<SettingsHolder>()
                 .FromInstance(holder.SettingsHolder)
                 .AsSingle();
 
             Container.Bind<SettingsLoader>()
                 .FromInstance(holder.SettingsLoader)
-                .AsSingle();
-
-            Container.Bind<ProgressSaver>()
-                .FromInstance(holder.ProgressSaver)
-                .AsSingle();
-
-            Container.Bind<ProgressLoader>()
-                .FromInstance(holder.ProgressLoader)
                 .AsSingle();
 
             Container.Bind<MusicToggle>()
@@ -84,6 +73,22 @@ namespace Infrastructure
 
             Container.Bind<LevelLinksHolder>()
                 .FromInstance (_levelLinksHolder) 
+                .AsSingle();
+
+            Container.Bind<MoneyDisplay>()
+                .FromInstance(_moneyDisplay)
+                .AsSingle();
+
+            Container.Bind<LevelLoader>()
+                .To<LevelLoader>()
+                .AsSingle();
+
+            Container.Bind<PurchasedLevelsLoader>()
+                .FromInstance(_puchasedLevelsLoader)
+                .AsSingle();
+
+            Container.Bind<LevelSaver>()
+                .To<LevelSaver>()
                 .AsSingle();
         }
     }

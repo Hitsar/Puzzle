@@ -1,7 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using YG;
+using Zenject;
 
 namespace Shop
 {
@@ -9,10 +9,15 @@ namespace Shop
     {
         private Wallet _wallet;
         private Button _button;
-        
+
+        [Inject]
+        public void Construct(Wallet wallet)
+        {
+            _wallet = wallet;
+        }
+
         private void Start()
         {
-            _wallet = FindAnyObjectByType<Wallet>();
             _button = GetComponent<Button>();
             
             _button.onClick.AddListener(ShowAd);

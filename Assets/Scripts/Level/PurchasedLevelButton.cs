@@ -1,4 +1,4 @@
-using Saves;
+using SaveLoadSystem;
 using Shop;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,25 +12,25 @@ namespace Level
         [SerializeField] private GameObject _buyButton;
         
         [SerializeField] private bool _purchased;
-        private ProgressSaver _progressSaver;
+        private Wallet _wallet;
         public bool IsPurchased => _purchased;
         public int Number => _level;
+        
         [Inject]
-        public void Construct(ProgressSaver progressSaver)
+        public void Construct(LevelSaver levelSaver, Wallet wallet)
         {
-            _progressSaver = progressSaver;
+            _wallet = wallet;
         }
 
         protected virtual void AttendBuy()
         {
-            if (!FindAnyObjectByType<Wallet>().RemoveMoney(_price)) return;
+            if (!_wallet.RemoveMoney(_price)) return;
             Buy();
         }
 
         protected void Buy()
         {
             OpenAccessToLevel();
-            _progressSaver.Save();
         }
 
         public override void LoadLevel()

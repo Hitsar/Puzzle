@@ -4,6 +4,8 @@ using PuzzleBuilder;
 using Puzzles;
 using Audio;
 using ConfigFeature;
+using UI;
+using SaveLoadSystem;
 
 namespace Infrastructure
 {
@@ -19,11 +21,14 @@ namespace Infrastructure
         [SerializeField] private PiecesSpawner _peicesSpawner;
         [SerializeField] private WinAudio _winAudio;
         [SerializeField] private AudioInPlace _audioInPlace;
+        [SerializeField] private PuzzleBuilderCore _puzzleBuilderCore;
 
         [Header("UI")]
         [SerializeField] private Canvas _canvas;
         [SerializeField] private LayoutPuzzleBar _puzzleBar;
         [SerializeField] private PuzzleDump _puzzleDump;
+        [SerializeField] private LevelRewardDisplay _levelRewardDisplay;
+        [SerializeField] private MoneyDisplay _moneyDisplay;
         public override void InstallBindings()
         {
             Container.Bind<MaxPuzzleArea>()
@@ -96,6 +101,18 @@ namespace Infrastructure
 
             Container.Bind<SpriteSorter>()
                 .To<SpriteSorter>()
+                .AsSingle();
+
+            Container.Bind<LevelRewardDisplay>()
+                .FromInstance(_levelRewardDisplay) 
+                .AsSingle();
+
+            Container.Bind<MoneyDisplay>()
+                .FromInstance(_moneyDisplay)
+                .AsSingle();
+
+            Container.Bind<PuzzleBuilderCore>()
+                .FromInstance(_puzzleBuilderCore) 
                 .AsSingle();
         }
     }

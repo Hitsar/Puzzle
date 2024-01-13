@@ -26,7 +26,7 @@ namespace YG
         public int quantityAround = 6;
 
         public enum UpdateLBMethod { Start, OnEnable, DoNotUpdate };
-        [Tooltip("Когда следует обновлять лидерборд?\nStart - Обновлять в методе Start.\nOnEnable - Обновлять при каждой активации объекта (в методе OnEnable)\nDoNotUpdate - Не обновлять лидерборд с помощью данного скрипта (подразоумивается, что метод обновления 'UpdateLB' вы будете запускать сами, когда вам потребуется.")]
+        [Tooltip("Когда следует обновлять лидерборд?\nStart - Обновлять в методе BuildPuzzle.\nOnEnable - Обновлять при каждой активации объекта (в методе OnEnable)\nDoNotUpdate - Не обновлять лидерборд с помощью данного скрипта (подразоумивается, что метод обновления 'UpdateLB' вы будете запускать сами, когда вам потребуется.")]
         public UpdateLBMethod updateLBMethod = UpdateLBMethod.OnEnable;
 
         [Tooltip("Перетащите компонент Text для записи описания таблицы, если вы не выбрали продвинутую таблицу (advanced)")]

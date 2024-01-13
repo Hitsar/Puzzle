@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Saves.SettingsSaveLoad
+namespace SaveLoadSystem.SettingsSaveLoad
 {
     public class SettingsValues : MonoBehaviour
     {

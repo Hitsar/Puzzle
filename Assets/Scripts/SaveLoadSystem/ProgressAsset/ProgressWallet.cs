@@ -1,6 +1,6 @@
 using System;
 
-namespace Saves
+namespace SaveLoadSystem
 {
     [Serializable]
     public class ProgressWallet

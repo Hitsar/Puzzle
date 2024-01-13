@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace Saves.SettingsSaveLoad
+namespace SaveLoadSystem.SettingsSaveLoad
 {
     public class SettingsSaver : MonoBehaviour
     {

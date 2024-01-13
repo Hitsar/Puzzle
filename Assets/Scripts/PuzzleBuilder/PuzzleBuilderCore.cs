@@ -19,6 +19,7 @@ namespace PuzzleBuilder
         private SketchPieceFactory _sketchPieceFactory;
         private InteractivePuzzleFactory _interactivePuzzleFactory;
         private SpriteSorter _spriteSorter;
+        public int TestLevelNumber => _testLevelNumber;
 
         [Inject]
         public void Construct(MaxPuzzleArea maxPuzzleArea, PuzzleArea puzzleArea, PuzzlesDataSO puzzlesDataSO, PiecesSpawner piecesSpawner, GameStateObserver gameStateObserver, SketchPieceFactory sketchPieceFactory, InteractivePuzzleFactory interactivePuzzleFactory, SpriteSorter spriteSorter)
@@ -33,8 +34,9 @@ namespace PuzzleBuilder
             _spriteSorter = spriteSorter;
         }
 
-        private void Start()
+        public void BuildPuzzle()
         {
+            Debug.Log("Build puzzle");
             StartCoroutine(WaitForEndOfFrame());
         }
         public IEnumerator WaitForEndOfFrame()

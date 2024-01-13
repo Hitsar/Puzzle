@@ -1,6 +1,7 @@
 using Shop;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Level
 {
@@ -8,12 +9,17 @@ namespace Level
     {
         [SerializeField] protected int _level;
         [SerializeField] private int _moneyForWin;
-
+        private LevelSaver _levelSaver;
         private const string _gameplaySceneName = "GameplayScene";
+        [Inject]
+        public void Construct(LevelSaver levelSaver)
+        {
+            _levelSaver = levelSaver;
+        }
         public virtual void LoadLevel()
         {
-            FindAnyObjectByType<Wallet>().SetMoneyForWin(_moneyForWin);
             LevelNumberPasser.SetLevelNumber(_level);
+            _levelSaver.Save();
             SceneManager.LoadScene(_gameplaySceneName);
         }
     }

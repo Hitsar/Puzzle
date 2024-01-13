@@ -1,35 +1,31 @@
-using Saves;
+using SaveLoadSystem;
 using TMPro;
+using UI;
 using UnityEngine;
+using Zenject;
 
 namespace Shop
 {
-    public class Wallet : MonoBehaviour, ISaveableMoney
+    public class Wallet :  ISaveableMoney
     {
         public int Money { get; private set; }
-
-        [SerializeField] private TMP_Text _textMoney;
-        [SerializeField] private TMP_Text _textMoneyForWin;
+        private MoneyDataSO _moneyData;
+        private MoneyDisplay _moneyDisplay;
+        private int _levelReward;
+        public int LevelReward => _levelReward;
         
-        private int _moneyForWin;
 
-        private static Wallet _instance;
-        
-        private void Awake()
+        [Inject]
+        public Wallet(MoneyDisplay moneyDisplay, MoneyDataSO moneyDataSO)
         {
-            if (_instance != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            DontDestroyOnLoad(gameObject);
-            _instance = this;
+            _moneyDisplay = moneyDisplay;
+            _moneyData = moneyDataSO;
         }
 
         public void AddMoneyForWin()
         {
-            Money += _moneyForWin;
-            _textMoney.text = Money.ToString();          
+            Money += _levelReward;
+            _moneyDisplay.UpdateMoneyValue(Money);
         }
 
         public bool RemoveMoney(int money)
@@ -37,25 +33,19 @@ namespace Shop
             if (Money - money < 0 || money < 0) return false;
             
             Money -= money;
-            _textMoney.text = Money.ToString();
-            
+            _moneyDisplay.UpdateMoneyValue(Money);
             return true;
         }
-
-        public void UpdateMoney() => _textMoney.text = Money.ToString();
             
-        public void SetMoneyForWin(int money)
-        {
-            if (money < 0) return;
-            
-            _moneyForWin = money;
-            _textMoneyForWin.text = _moneyForWin.ToString();
+        public void SetMoneyForWin(int levelNumber)
+        {   
+            _levelReward = _moneyData.GetReward(levelNumber);
         }
 
-        public void Import(ProgressWallet progressWallet)
+        public void Import(int savedMoneyValue)
         {
-            Money = progressWallet.MoneyCount;
-            UpdateMoney();
+            Money = savedMoneyValue;
+            _moneyDisplay.UpdateMoneyValue(Money);
         }
 
         public ProgressWallet Export()
